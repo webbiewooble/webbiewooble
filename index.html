@@ -121,6 +121,13 @@
                 height: 16px;
             }
         }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -174,7 +181,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <!-- Property 1 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912998-c57cc6b63ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Spacious Master Bedroom, Panoramic City View Balcony, Modular Kitchen, Italian Marble Flooring, Smart Home Automation" data-gif="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700024567">
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912998-c57cc6b63ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Spacious Master Bedroom, Panoramic City View Balcony, Modular Kitchen, Italian Marble Flooring, Smart Home Automation" data-gif="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700024567" data-status="Ready to Move" data-possession="Immediate" data-towers="4 Towers" data-units="240 Units" data-developer="Sterling Developers" data-floorplans="2 BHK|850 sqft|₹1.25 Cr, 3 BHK|1250 sqft|₹1.85 Cr">
                     <div class="relative overflow-hidden mb-6">
                         <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apartment" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
                         <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
@@ -185,7 +192,7 @@
                     </div>
                     <p class="text-gray-500 text-sm mb-2">Kolshet Road, Thane West</p>
                     <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700024567</p>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Experience luxury living in this beautifully designed 3 BHK apartment featuring modern amenities, spacious balconies, and stunning city views. The expansive living area is perfect for entertaining guests, while the private master suite offers a tranquil retreat from the bustling city below. Enjoy state-of-the-art smart home features and premium Italian marble flooring throughout.</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Experience luxury living in this beautifully designed 3 BHK apartment featuring modern amenities, spacious balconies, and stunning city views. The expansive living area is perfect for entertaining guests, while the private master suite offers a tranquil retreat from the bustling city below. Enjoy state-of-the-art smart home features, premium Italian marble flooring throughout, and exclusive access to the residents-only sky lounge. This property redefines urban elegance with its meticulous attention to detail and unparalleled craftsmanship.</p>
                     <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 3 Beds</span>
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 3 Baths</span>
@@ -193,7 +200,7 @@
                 </div>
 
                 <!-- Property 2 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Private Plunge Pool, Landscaped Garden, Walk-in Wardrobes, Home Theatre Room, Double-Height Living Area" data-gif="https://images.unsplash.com/photo-1584738766473-61c083514bf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P52100018902">
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Private Plunge Pool, Landscaped Garden, Walk-in Wardrobes, Home Theatre Room, Double-Height Living Area" data-gif="https://images.unsplash.com/photo-1584738766473-61c083514bf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P52100018902" data-status="Under Construction" data-possession="Dec 2025" data-towers="1 Tower" data-units="45 Units" data-developer="Elite Spaces" data-floorplans="4 BHK Villa|3500 sqft|₹4.50 Cr, 5 BHK Villa|4200 sqft|₹5.80 Cr">
                     <div class="relative overflow-hidden mb-6">
                         <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
                         <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
@@ -204,7 +211,7 @@
                     </div>
                     <p class="text-gray-500 text-sm mb-2">Koregaon Park, Pune</p>
                     <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P52100018902</p>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">An exquisite independent villa offering unparalleled privacy, a private garden, premium fittings, and state-of-the-art security systems. This architectural masterpiece features a double-height living area that floods the home with natural light. Step outside to your private plunge pool and beautifully landscaped garden, creating the ultimate oasis in the heart of the city.</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">An exquisite independent villa offering unparalleled privacy, a private garden, premium fittings, and state-of-the-art security systems. This architectural masterpiece features a double-height living area that floods the home with natural light. Step outside to your private plunge pool and beautifully landscaped garden, creating the ultimate oasis in the heart of the city. The property also includes a dedicated home theatre room, walk-in wardrobes in every bedroom, and a fully automated climate control system for year-round comfort.</p>
                     <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 5 Baths</span>
@@ -212,7 +219,7 @@
                 </div>
 
                 <!-- Property 3 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491369-0e4438bf3e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491892-03d54c8aaf8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687644-aac4c15cecb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Unobstructed Sea View, Private Terrace Deck, Jacuzzi in Master Bath, Floor-to-Ceiling Windows, Private Elevator Access" data-gif="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700031209">
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491369-0e4438bf3e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491892-03d54c8aaf8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687644-aac4c15cecb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Unobstructed Sea View, Private Terrace Deck, Jacuzzi in Master Bath, Floor-to-Ceiling Windows, Private Elevator Access" data-gif="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700031209" data-status="Ready to Move" data-possession="Immediate" data-towers="2 Towers" data-units="80 Units" data-developer="Palm Beach Group" data-floorplans="3 BHK|1800 sqft|₹3.50 Cr, 4 BHK Penthouse|2800 sqft|₹5.25 Cr">
                     <div class="relative overflow-hidden mb-6">
                         <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
                         <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
@@ -223,7 +230,7 @@
                     </div>
                     <p class="text-gray-500 text-sm mb-2">Palm Beach Road, Navi Mumbai</p>
                     <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700031209</p>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Wake up to breathtaking ocean panoramas in this ultra-luxurious penthouse equipped with a private terrace and smart home automation. Floor-to-ceiling windows ensure every room is bathed in natural light while offering unobstructed views of the sea. The master suite includes a spa-like bathroom with a jacuzzi, and the private elevator access guarantees absolute exclusivity.</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Wake up to breathtaking ocean panoramas in this ultra-luxurious penthouse equipped with a private terrace and smart home automation. Floor-to-ceiling windows ensure every room is bathed in natural light while offering unobstructed views of the sea. The master suite includes a spa-like bathroom with a jacuzzi, and the private elevator access guarantees absolute exclusivity. Entertain guests on your expansive deck, complete with an outdoor kitchen and lounge area, all while enjoying the gentle sea breeze.</p>
                     <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 4 Baths</span>
@@ -231,7 +238,7 @@
                 </div>
 
                 <!-- Property 4 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Wrap-around Balcony, Chef's Kitchen, Maid's Quarters, Imported Fittings, Exclusive Club Access" data-gif="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800027734">
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Wrap-around Balcony, Chef's Kitchen, Maid's Quarters, Imported Fittings, Exclusive Club Access" data-gif="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800027734" data-status="Under Construction" data-possession="Mar 2026" data-towers="3 Towers" data-units="150 Units" data-developer="Signature Realty" data-floorplans="3 BHK|1600 sqft|₹8.50 Cr, 4 BHK|2400 sqft|₹12.50 Cr">
                     <div class="relative overflow-hidden mb-6">
                         <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ultra Luxury Apartment" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
                         <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
@@ -242,7 +249,7 @@
                     </div>
                     <p class="text-gray-500 text-sm mb-2">Bandra West, Mumbai</p>
                     <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51800027734</p>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Nestled in the heart of Bandra, this expansive 4 BHK residence boasts designer interiors, premium Italian marble, and world-class club facilities. The wrap-around balcony provides stunning 270-degree views of the vibrant neighborhood. A fully-equipped chef's kitchen and dedicated maid's quarters make this home as functional as it is beautiful.</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Nestled in the heart of Bandra, this expansive 4 BHK residence boasts designer interiors, premium Italian marble, and world-class club facilities. The wrap-around balcony provides stunning 270-degree views of the vibrant neighborhood. A fully-equipped chef's kitchen and dedicated maid's quarters make this home as functional as it is beautiful. Residents also enjoy priority access to the signature clubhouse, featuring an Olympic-sized swimming pool, a professional-grade gymnasium, and a private cinema.</p>
                     <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 4 Baths</span>
@@ -250,7 +257,7 @@
                 </div>
 
                 <!-- Property 5 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502672260266-1c1b56112f59?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Double-Height Ceiling, Lake View Balcony, Teakwood Staircase, Premium Clubhouse, 24/7 Concierge" data-gif="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700019888">
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502672260266-1c1b56112f59?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Double-Height Ceiling, Lake View Balcony, Teakwood Staircase, Premium Clubhouse, 24/7 Concierge" data-gif="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700019888" data-status="Ready to Move" data-possession="Immediate" data-towers="8 Towers" data-units="600 Units" data-developer="Hiranandani Constructions" data-floorplans="2 BHK|950 sqft|₹1.80 Cr, 3 BHK Duplex|1850 sqft|₹3.20 Cr">
                     <div class="relative overflow-hidden mb-6">
                         <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Duplex" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
                         <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
@@ -261,7 +268,7 @@
                     </div>
                     <p class="text-gray-500 text-sm mb-2">Hiranandani Estate, Thane</p>
                     <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700019888</p>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">A contemporary duplex apartment offering double-height ceilings, abundant natural light, and access to premium township amenities. The stunning teakwood staircase serves as a centerpiece, leading up to the private master quarters. Enjoy your morning coffee on the lake view balcony, and take advantage of the 24/7 concierge service.</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">A contemporary duplex apartment offering double-height ceilings, abundant natural light, and access to premium township amenities. The stunning teakwood staircase serves as a centerpiece, leading up to the private master quarters. Enjoy your morning coffee on the lake view balcony, and take advantage of the 24/7 concierge service. This residence is part of a meticulously planned community that includes international schools, high-end retail outlets, and expansive green parks right at your doorstep.</p>
                     <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 3 Beds</span>
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 3 Baths</span>
@@ -269,7 +276,7 @@
                 </div>
 
                 <!-- Property 6 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622781264-4a2f12365847?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1574362844344-1406b3212d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Direct Lake Views, Infinity Pool Access, Spacious Master Suite, Sky Lounge, Advanced Security" data-gif="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800001234">
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622781264-4a2f12365847?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1574362844344-1406b3212d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Direct Lake Views, Infinity Pool Access, Spacious Master Suite, Sky Lounge, Advanced Security" data-gif="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800001234" data-status="Under Construction" data-possession="Jun 2025" data-towers="5 Towers" data-units="320 Units" data-developer="Lakeview Properties" data-floorplans="3 BHK|1400 sqft|₹4.20 Cr, 4 BHK|3100 sqft|₹6.75 Cr">
                     <div class="relative overflow-hidden mb-6">
                         <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lakeview Estate" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
                         <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
@@ -280,7 +287,7 @@
                     </div>
                     <p class="text-gray-500 text-sm mb-2">Powai, Mumbai</p>
                     <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51800001234</p>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">Overlooking the serene Powai Lake, this premium estate features resort-style living with lush green surroundings and top-tier recreational facilities. The spacious master suite offers direct lake views, while residents enjoy exclusive access to an infinity pool and rooftop sky lounge. Advanced security systems ensure peace of mind in this prestigious community.</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Overlooking the serene Powai Lake, this premium estate features resort-style living with lush green surroundings and top-tier recreational facilities. The spacious master suite offers direct lake views, while residents enjoy exclusive access to an infinity pool and rooftop sky lounge. Advanced security systems ensure peace of mind in this prestigious community. The property is designed with sustainability in mind, incorporating rainwater harvesting, solar heating, and extensive landscaped gardens that blend seamlessly with the natural environment.</p>
                     <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
                         <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 5 Baths</span>
@@ -325,6 +332,20 @@
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 Back to Listings
             </button>
+
+            <!-- Sticky Property Navigation -->
+            <div class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 mb-8 py-4 -mx-6 px-6 shadow-sm hidden md:block">
+                <div class="flex space-x-6 overflow-x-auto hide-scrollbar">
+                    <button onclick="scrollToSection('sec-rera')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">RERA Details</button>
+                    <button onclick="scrollToSection('sec-project-info')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Project Info</button>
+                    <button onclick="scrollToSection('sec-overview')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Overview</button>
+                    <button onclick="scrollToSection('sec-amenities')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Amenities</button>
+                    <button onclick="scrollToSection('sec-floor-plans')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Floor Plans</button>
+                    <button onclick="scrollToSection('sec-map')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Location Map</button>
+                    <button onclick="scrollToSection('sec-developer')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Developer</button>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
                     <img id="pp-img" src="" alt="Property" class="w-full h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg mb-4" referrerPolicy="no-referrer">
@@ -353,18 +374,6 @@
                         </div>
                     </div>
                     
-                    <h3 class="text-2xl font-serif text-dark mb-4">About this property</h3>
-                    <p id="pp-desc" class="text-gray-800 text-xl leading-relaxed mb-8 font-light"></p>
-                    
-                    <div id="pp-gif-container" class="mb-10 rounded-xl overflow-hidden shadow-lg border border-gray-100">
-                        <img id="pp-gif" src="" alt="Property Highlight" class="w-full h-[300px] object-cover" referrerPolicy="no-referrer">
-                    </div>
-                    
-                    <h3 class="text-2xl font-serif text-dark mb-4">Highlighted Features</h3>
-                    <div id="pp-features" class="flex flex-wrap gap-3 mb-8">
-                        <!-- Features injected here -->
-                    </div>
-                    
                     <div class="flex space-x-4">
                         <button onclick="openModal()" class="flex-1 bg-dark text-white hover:bg-gold-500 py-4 uppercase tracking-wider text-sm font-medium transition-colors duration-300 text-center rounded-lg">Enquire Now</button>
                         <a href="https://wa.me/919619135506" target="_blank" rel="noopener noreferrer" class="flex-1 border border-dark text-dark hover:bg-dark hover:text-white py-4 uppercase tracking-wider text-sm font-medium transition-colors duration-300 text-center flex items-center justify-center rounded-lg">
@@ -373,6 +382,124 @@
                         </a>
                     </div>
                 </div>
+            </div>
+
+            <!-- Comprehensive Details Section (Single Column) -->
+            <div class="mt-20 border-t border-gray-100 pt-16 max-w-4xl mx-auto space-y-16">
+                
+                <!-- 1. RERA Details -->
+                <section id="sec-rera">
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-100">
+                        <h3 class="text-2xl font-serif text-dark mb-4">RERA Details</h3>
+                        <p class="text-gray-600 mb-4">The project has been registered via MahaRERA registration number:</p>
+                        <p id="pp-rera-full" class="font-mono font-semibold text-dark text-xl mb-4"></p>
+                        <p class="text-sm text-gray-400">Available on the website <a href="https://maharera.mahaonline.gov.in" target="_blank" rel="noopener noreferrer" class="text-gold-500 hover:underline">https://maharera.mahaonline.gov.in</a> under registered projects.</p>
+                    </div>
+                </section>
+
+                <!-- 2. Project Information -->
+                <section id="sec-project-info">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Project Information</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Status</p>
+                            <p class="font-medium text-dark text-lg" id="pp-status"></p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Possession</p>
+                            <p class="font-medium text-dark text-lg" id="pp-possession"></p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Towers</p>
+                            <p class="font-medium text-dark text-lg" id="pp-towers"></p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Total Units</p>
+                            <p class="font-medium text-dark text-lg" id="pp-units"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Overview -->
+                <section id="sec-overview">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Overview</h3>
+                    <p id="pp-desc" class="text-gray-800 text-xl leading-relaxed mb-8 font-light"></p>
+                    
+                    <div id="pp-gif-container" class="rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                        <img id="pp-gif" src="" alt="Property Highlight" class="w-full h-[400px] object-cover" referrerPolicy="no-referrer">
+                    </div>
+                </section>
+
+                <!-- 4. Amenities -->
+                <section id="sec-amenities">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Amenities</h3>
+                    <div id="pp-features" class="flex flex-wrap gap-4">
+                        <!-- Features injected here -->
+                    </div>
+                </section>
+
+                <!-- 5. Unit Floor Plan Pricing -->
+                <section id="sec-floor-plans">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Unit Floor Plan & Pricing</h3>
+                    <div class="overflow-x-auto border border-gray-100 rounded-xl shadow-sm">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 text-gray-500 text-sm uppercase tracking-wider">
+                                    <th class="p-6 font-medium border-b border-gray-100">Configuration</th>
+                                    <th class="p-6 font-medium border-b border-gray-100">Carpet Area</th>
+                                    <th class="p-6 font-medium border-b border-gray-100">Price</th>
+                                    <th class="p-6 font-medium border-b border-gray-100 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pp-floor-plans-body" class="divide-y divide-gray-100 bg-white">
+                                <!-- Injected -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Location Map -->
+                <section id="sec-map">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Location Map</h3>
+                    <div class="w-full h-[450px] bg-gray-200 rounded-xl overflow-hidden relative border border-gray-100 shadow-sm">
+                        <iframe id="pp-map-iframe" src="" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+
+                <!-- 6. Developer Details -->
+                <section id="sec-developer">
+                    <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
+                        <h3 class="text-2xl font-serif text-dark mb-6">Developer Details</h3>
+                        <div class="flex items-center space-x-6 mb-6">
+                            <div class="w-16 h-16 bg-dark rounded-full flex items-center justify-center flex-shrink-0 text-2xl font-serif text-gold-400">
+                                <span id="pp-dev-initial">D</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-medium text-dark mb-1" id="pp-dev-name">Developer Name</h4>
+                                <p class="text-sm text-gray-500 uppercase tracking-wider">Premium Real Estate Builder</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-8 leading-relaxed">Committed to delivering high-quality residential projects with world-class amenities, innovative designs, and timely possession. Building trust through transparency and excellence.</p>
+                    </div>
+                </section>
+
+                <!-- 7. Contact Enquiry -->
+                <section id="sec-contact">
+                    <div class="bg-dark text-white p-10 rounded-xl shadow-xl relative overflow-hidden">
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
+                            <div class="mb-8 md:mb-0 md:mr-8">
+                                <h3 class="text-3xl font-serif mb-3">Interested in this property?</h3>
+                                <p class="text-gray-400 text-lg max-w-lg">Get in touch with our real estate experts for more details, site visits, and exclusive offers.</p>
+                            </div>
+                            <button onclick="openModal()" class="w-full md:w-auto whitespace-nowrap bg-gold-500 hover:bg-gold-400 text-white px-10 py-5 rounded-lg text-sm font-bold transition-colors flex items-center justify-center uppercase tracking-wider shadow-lg">
+                                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                Contact Enquiry
+                            </button>
+                        </div>
+                        <svg class="absolute -bottom-16 -right-16 w-80 h-80 text-white opacity-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                    </div>
+                </section>
+
             </div>
         </div>
     </div>
@@ -419,7 +546,7 @@
                 <div>
                     <h4 class="text-lg font-serif mb-4">Legal</h4>
                     <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="#terms" class="hover:text-gold-400 transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#" onclick="openTerms(); return false;" class="hover:text-gold-400 transition-colors">Terms & Conditions</a></li>
                         <li><a href="#privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a></li>
                         <li><a href="#disclaimer" class="hover:text-gold-400 transition-colors">Disclaimer</a></li>
                     </ul>
@@ -438,19 +565,40 @@
         </div>
     </footer>
 
-    <!-- Legal Modals/Sections (Hidden by default, can be expanded or linked to separate pages) -->
-    <section id="terms" class="hidden py-24 bg-white">
+    <!-- Terms and Conditions View -->
+    <div id="terms-view" class="hidden pt-28 pb-24 bg-white min-h-screen">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-serif text-dark mb-6">Terms & Conditions</h2>
-            <div class="prose text-gray-600">
-                <p class="mb-4">Welcome to Thane Home. By accessing our website, you agree to these terms and conditions. Please read them carefully.</p>
-                <h3 class="text-xl font-medium text-dark mt-6 mb-3">1. Property Information</h3>
-                <p class="mb-4">All property details, including prices, dimensions, and availability, are subject to change without notice. We strive for accuracy but cannot guarantee that all information is completely up-to-date.</p>
-                <h3 class="text-xl font-medium text-dark mt-6 mb-3">2. User Obligations</h3>
-                <p class="mb-4">Users agree to use this website for lawful purposes only and not to engage in any conduct that restricts or inhibits anyone else's use or enjoyment of the site.</p>
+            <button onclick="closeTerms()" class="flex items-center text-gray-500 hover:text-gold-500 transition-colors mb-8">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Home
+            </button>
+            <h2 class="text-4xl font-serif text-dark mb-8">Terms & Conditions</h2>
+            <div class="prose text-gray-600 space-y-6">
+                <p>Welcome to Thane Home. By accessing our website, you agree to these terms and conditions. Please read them carefully.</p>
+                
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">1. Acceptance of Terms</h3>
+                <p>By accessing and using the Thane Home website, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using this website's particular services, you shall be subject to any posted guidelines or rules applicable to such services.</p>
+                
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">2. Property Information and Disclaimer</h3>
+                <p>All property details, including prices, dimensions, floor plans, amenities, and availability, are subject to change without notice. We strive for accuracy but cannot guarantee that all information is completely up-to-date or error-free. The images, renders, and videos are for representational purposes only.</p>
+                
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">3. User Obligations</h3>
+                <p>Users agree to use this website for lawful purposes only and not to engage in any conduct that restricts or inhibits anyone else's use or enjoyment of the site. You agree not to use the site to send unsolicited commercial emails or "spam".</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">4. Intellectual Property</h3>
+                <p>The site and its original content, features, and functionality are owned by Thane Home and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">5. Limitation of Liability</h3>
+                <p>In no event shall Thane Home, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the website.</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">6. Changes to Terms</h3>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. What constitutes a material change will be determined at our sole discretion.</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">7. Contact Us</h3>
+                <p>If you have any questions about these Terms, please contact us at hello@thanehome.com or call us at +91 96191 35506.</p>
             </div>
         </div>
-    </section>
+    </div>
 
     <section id="privacy" class="hidden py-24 bg-white">
         <div class="max-w-4xl mx-auto px-6">
@@ -633,10 +781,49 @@
             document.getElementById('pp-location').textContent = location;
             if (rera) {
                 document.getElementById('pp-rera').textContent = `RERA Registration No: ${rera}`;
+                document.getElementById('pp-rera-full').textContent = rera;
             } else {
                 document.getElementById('pp-rera').textContent = '';
+                document.getElementById('pp-rera-full').textContent = 'Not Available';
             }
             document.getElementById('pp-desc').textContent = desc;
+            
+            // Populate Project Info
+            document.getElementById('pp-status').textContent = el.getAttribute('data-status') || 'N/A';
+            document.getElementById('pp-possession').textContent = el.getAttribute('data-possession') || 'N/A';
+            document.getElementById('pp-towers').textContent = el.getAttribute('data-towers') || 'N/A';
+            document.getElementById('pp-units').textContent = el.getAttribute('data-units') || 'N/A';
+            
+            // Populate Developer
+            const devName = el.getAttribute('data-developer') || 'Premium Builder';
+            document.getElementById('pp-dev-name').textContent = devName;
+            document.getElementById('pp-dev-initial').textContent = devName.charAt(0);
+            
+            // Populate Map
+            const mapIframe = document.getElementById('pp-map-iframe');
+            mapIframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(location)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+            
+            // Populate Floor Plans
+            const floorplansAttr = el.getAttribute('data-floorplans');
+            const fpBody = document.getElementById('pp-floor-plans-body');
+            fpBody.innerHTML = '';
+            if (floorplansAttr) {
+                const plans = floorplansAttr.split(',');
+                plans.forEach(plan => {
+                    const [config, area, price] = plan.split('|');
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-gray-50 transition-colors";
+                    tr.innerHTML = `
+                        <td class="p-4 font-medium text-dark">${config ? config.trim() : ''}</td>
+                        <td class="p-4 text-gray-600">${area ? area.trim() : ''}</td>
+                        <td class="p-4 text-gold-500 font-medium">${price ? price.trim() : ''}</td>
+                        <td class="p-4 text-right">
+                            <button onclick="openModal()" class="text-sm text-dark hover:text-gold-500 font-medium underline">Enquire</button>
+                        </td>
+                    `;
+                    fpBody.appendChild(tr);
+                });
+            }
             
             const gifContainer = document.getElementById('pp-gif-container');
             if (gif) {
@@ -659,6 +846,28 @@
             document.getElementById('main-view').classList.remove('hidden');
             if (scrollToProperties) {
                 window.scrollTo(0, document.getElementById('properties').offsetTop - 80);
+            }
+        }
+
+        function openTerms() {
+            document.getElementById('main-view').classList.add('hidden');
+            document.getElementById('property-view').classList.add('hidden');
+            document.getElementById('terms-view').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function closeTerms() {
+            document.getElementById('terms-view').classList.add('hidden');
+            document.getElementById('main-view').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                // Offset for the sticky header + main navbar
+                const y = section.getBoundingClientRect().top + window.scrollY - 140;
+                window.scrollTo({ top: y, behavior: 'smooth' });
             }
         }
     </script>

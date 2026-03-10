@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thane Home | Premium Real Estate</title>
+    <title>Master Forex Trading | Premium Workshop</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        gold: {
-                            400: '#D4AF37',
-                            500: '#AA8C2C',
-                        },
-                        dark: '#111111'
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
                     }
                 }
             }
@@ -28,917 +30,364 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9f9f9;
-        }
-        h1, h2, h3, h4, h5, h6, .font-serif {
-            font-family: 'Playfair Display', serif;
-        }
-        .hero-bg {
-            background-image: linear-gradient(rgba(17, 17, 17, 0.4), rgba(17, 17, 17, 0.7)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=2075&q=80');
-            background-size: cover;
-            background-position: center;
+            background-color: #FAFAFA;
+            color: #111827;
         }
         .glass-nav {
-            background: rgba(17, 17, 17, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-        /* Floating Buttons */
-        .floating-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: row;
-            gap: 12px;
-            z-index: 50;
+        .premium-shadow {
+            box-shadow: 0 10px 40px -10px rgba(37, 99, 235, 0.15);
         }
-        .float-btn {
-            height: 50px;
-            width: 140px; /* Fixed width to make them exactly the same size */
-            padding: 0 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: white;
-            font-weight: 500;
-            font-size: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-        }
-        .float-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        .enquiry-btn {
-            background-color: #111111;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .enquiry-btn:hover {
-            background-color: #222222;
-        }
-        .whatsapp-btn {
-            background-color: #111111;
-            color: #25D366;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .whatsapp-btn:hover {
-            background-color: #222222;
-        }
-        .call-btn {
-            background-color: #111111;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .call-btn:hover {
-            background-color: #222222;
-        }
-        
-        /* Mobile Responsiveness for Floating Buttons */
-        @media (max-width: 768px) {
-            .floating-container {
-                bottom: 20px;
-                right: 50%;
-                transform: translateX(50%);
-                width: 94%;
-                gap: 8px;
-            }
-            .float-btn {
-                width: 100%;
-                flex: 1;
-                height: 44px;
-                padding: 0 4px;
-                font-size: 11px;
-                gap: 4px;
-            }
-            .float-btn svg {
-                width: 16px;
-                height: 16px;
-            }
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
         }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
+<body class="antialiased selection:bg-brand-100 selection:text-brand-900">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-40 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" onclick="closeProperty()" class="text-2xl text-white font-serif tracking-wider">THANE HOME<span class="text-gold-400">.</span></a>
-            
-            <div class="hidden md:flex space-x-8 text-sm font-medium text-white tracking-wide uppercase items-center absolute left-1/2 transform -translate-x-1/2">
-                <a href="#home" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">Home</a>
-                <a href="#properties" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">Properties</a>
-                <a href="#about" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">About</a>
-                <a href="#contact" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">Contact</a>
-            </div>
-
-            <!-- Social Icons -->
-            <div class="flex space-x-5 items-center">
-                <a href="https://www.instagram.com/prop_advesers_realtors?igsh=Z2NmcHJlNXQzZjN6" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gold-400 transition-colors" aria-label="Instagram">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
-                    </svg>
-                </a>
-                <a href="https://www.facebook.com/share/1BH6URH3tT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gold-400 transition-colors" aria-label="Facebook">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                    </svg>
-                </a>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-gray-900">Trending<span class="text-brand-600">Wick</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">About</a>
+                    <a href="#curriculum" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Curriculum</a>
+                    <a href="#instructor" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Instructor</a>
+                    <a href="#reviews" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Reviews</a>
+                </div>
+                <div class="flex items-center gap-5">
+                    <a href="https://www.instagram.com/trendingwick?igsh=YW5tNzFsbDR0NWI0" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-[#E1306C] transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="#register" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-brand-600 rounded-full hover:bg-brand-700 transition-colors premium-shadow">
+                        Reserve Seat
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div id="main-view">
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center hero-bg">
-        <div class="text-center px-4 max-w-4xl mx-auto mt-20">
-            <span class="text-gold-400 uppercase tracking-[0.3em] text-sm font-semibold mb-4 block">Premium Real Estate</span>
-            <h1 class="text-5xl md:text-7xl text-white font-serif mb-6 leading-tight">Find Your Place <br><span class="italic font-light">in the World</span></h1>
-            <p class="text-gray-300 text-lg md:text-xl mb-10 font-light max-w-2xl mx-auto">Your trusted partner for premium homes and smart property investments in Thane, Mumbai & Navi Mumbai.</p>
-            <a href="#properties" class="inline-block border border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-white px-10 py-4 uppercase tracking-widest text-sm transition-all duration-300">View Collection</a>
+    <section class="pt-32 pb-20 px-6 lg:px-12 max-w-7xl mx-auto text-center min-h-[90vh] flex flex-col justify-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-600 font-semibold text-xs tracking-wide uppercase mb-8 border border-brand-100 mx-auto">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-600"></span>
+            </span>
+            Live 3-Day Virtual Masterclass
+        </div>
+        
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-gray-900 mb-8 leading-[1.05]">
+            Stop Gambling.<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-blue-400">Start Trading.</span>
+        </h1>
+        
+        <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Master the exact institutional strategies used by top Forex traders to generate consistent daily returns, regardless of market conditions.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="#register" class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-full font-semibold text-lg transition-all transform hover:-translate-y-1 premium-shadow">
+                Register for ₹4,999
+            </a>
+            <a href="#curriculum" class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 rounded-full font-semibold text-lg transition-all card-shadow">
+                View Curriculum
+            </a>
+        </div>
+        
+        <p class="mt-8 text-sm text-gray-400 font-medium">
+            Next cohort starts in 5 days. Only 50 seats available.
+        </p>
+    </section>
+
+    <!-- Stats -->
+    <section id="about" class="py-16 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100 text-center">
+                <div class="px-4">
+                    <div class="text-4xl font-extrabold text-gray-900 mb-2">5,000+</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Students Taught</div>
+                </div>
+                <div class="px-4">
+                    <div class="text-4xl font-extrabold text-gray-900 mb-2">15+</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Years Experience</div>
+                </div>
+                <div class="px-4">
+                    <div class="text-4xl font-extrabold text-gray-900 mb-2">4.9/5</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Average Rating</div>
+                </div>
+                <div class="px-4">
+                    <div class="text-4xl font-extrabold text-gray-900 mb-2">3 Days</div>
+                    <div class="text-sm font-medium text-gray-500 uppercase tracking-wider">Intensive Training</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Featured Properties -->
-    <section id="properties" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
+    <!-- Curriculum -->
+    <section id="curriculum" class="py-24 bg-[#FAFAFA]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-serif text-dark mb-4">Featured Properties</h2>
-                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">What You Will Master</h2>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto">This isn't just theory. We dive deep into live charts and execute real trades using proven institutional concepts.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Property 1 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912998-c57cc6b63ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Spacious Master Bedroom, Panoramic City View Balcony, Modular Kitchen, Italian Marble Flooring, Smart Home Automation" data-gif="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700024567" data-status="Ready to Move" data-possession="Immediate" data-towers="4 Towers" data-units="240 Units" data-developer="Sterling Developers" data-floorplans="2 BHK|850 sqft|₹1.25 Cr, 3 BHK|1250 sqft|₹1.85 Cr">
-                    <div class="relative overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apartment" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
-                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Day 1 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 card-shadow hover:premium-shadow transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6 text-brand-600 font-bold text-xl">
+                        D1
                     </div>
-                    <div class="flex justify-between items-end mb-2">
-                        <h3 class="text-xl font-serif text-dark">Sterling Heights 3 BHK</h3>
-                        <span class="text-gold-500 font-medium">₹1.85 Cr</span>
-                    </div>
-                    <p class="text-gray-500 text-sm mb-2">Kolshet Road, Thane West</p>
-                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700024567</p>
-                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Experience luxury living in this beautifully designed 3 BHK apartment featuring modern amenities, spacious balconies, and stunning city views. The expansive living area is perfect for entertaining guests, while the private master suite offers a tranquil retreat from the bustling city below. Enjoy state-of-the-art smart home features, premium Italian marble flooring throughout, and exclusive access to the residents-only sky lounge. This property redefines urban elegance with its meticulous attention to detail and unparalleled craftsmanship.</p>
-                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 3 Beds</span>
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 3 Baths</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Market Structure</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Reading raw price action without lagging indicators
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Identifying true support, resistance, and liquidity pools
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Understanding market phases and institutional order flow
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Property 2 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Private Plunge Pool, Landscaped Garden, Walk-in Wardrobes, Home Theatre Room, Double-Height Living Area" data-gif="https://images.unsplash.com/photo-1584738766473-61c083514bf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P52100018902" data-status="Under Construction" data-possession="Dec 2025" data-towers="1 Tower" data-units="45 Units" data-developer="Elite Spaces" data-floorplans="4 BHK Villa|3500 sqft|₹4.50 Cr, 5 BHK Villa|4200 sqft|₹5.80 Cr">
-                    <div class="relative overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
-                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                <!-- Day 2 -->
+                <div class="bg-white rounded-3xl p-8 border border-brand-100 card-shadow hover:premium-shadow transition-shadow duration-300 relative transform md:-translate-y-4 ring-1 ring-brand-500/20">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                        Core Strategy
                     </div>
-                    <div class="flex justify-between items-end mb-2">
-                        <h3 class="text-xl font-serif text-dark">Koregaon Park Elite Villa</h3>
-                        <span class="text-gold-500 font-medium">₹4.50 Cr</span>
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6 text-brand-600 font-bold text-xl">
+                        D2
                     </div>
-                    <p class="text-gray-500 text-sm mb-2">Koregaon Park, Pune</p>
-                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P52100018902</p>
-                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">An exquisite independent villa offering unparalleled privacy, a private garden, premium fittings, and state-of-the-art security systems. This architectural masterpiece features a double-height living area that floods the home with natural light. Step outside to your private plunge pool and beautifully landscaped garden, creating the ultimate oasis in the heart of the city. The property also includes a dedicated home theatre room, walk-in wardrobes in every bedroom, and a fully automated climate control system for year-round comfort.</p>
-                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 5 Baths</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">The "Sniper" System</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Exact entry criteria for high-probability setups
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Multi-timeframe analysis for precise execution
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Live market scanning and trade breakdown
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Property 3 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491369-0e4438bf3e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491892-03d54c8aaf8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687644-aac4c15cecb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Unobstructed Sea View, Private Terrace Deck, Jacuzzi in Master Bath, Floor-to-Ceiling Windows, Private Elevator Access" data-gif="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700031209" data-status="Ready to Move" data-possession="Immediate" data-towers="2 Towers" data-units="80 Units" data-developer="Palm Beach Group" data-floorplans="3 BHK|1800 sqft|₹3.50 Cr, 4 BHK Penthouse|2800 sqft|₹5.25 Cr">
-                    <div class="relative overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
-                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                <!-- Day 3 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 card-shadow hover:premium-shadow transition-shadow duration-300">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6 text-brand-600 font-bold text-xl">
+                        D3
                     </div>
-                    <div class="flex justify-between items-end mb-2">
-                        <h3 class="text-xl font-serif text-dark">Palm Beach Sea-Facing Penthouse</h3>
-                        <span class="text-gold-500 font-medium">₹5.25 Cr</span>
-                    </div>
-                    <p class="text-gray-500 text-sm mb-2">Palm Beach Road, Navi Mumbai</p>
-                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700031209</p>
-                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Wake up to breathtaking ocean panoramas in this ultra-luxurious penthouse equipped with a private terrace and smart home automation. Floor-to-ceiling windows ensure every room is bathed in natural light while offering unobstructed views of the sea. The master suite includes a spa-like bathroom with a jacuzzi, and the private elevator access guarantees absolute exclusivity. Entertain guests on your expansive deck, complete with an outdoor kitchen and lounge area, all while enjoying the gentle sea breeze.</p>
-                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 4 Baths</span>
-                    </div>
-                </div>
-
-                <!-- Property 4 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Wrap-around Balcony, Chef's Kitchen, Maid's Quarters, Imported Fittings, Exclusive Club Access" data-gif="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800027734" data-status="Under Construction" data-possession="Mar 2026" data-towers="3 Towers" data-units="150 Units" data-developer="Signature Realty" data-floorplans="3 BHK|1600 sqft|₹8.50 Cr, 4 BHK|2400 sqft|₹12.50 Cr">
-                    <div class="relative overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ultra Luxury Apartment" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
-                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
-                    </div>
-                    <div class="flex justify-between items-end mb-2">
-                        <h3 class="text-xl font-serif text-dark">Pali Hill Signature 4 BHK</h3>
-                        <span class="text-gold-500 font-medium">₹12.50 Cr</span>
-                    </div>
-                    <p class="text-gray-500 text-sm mb-2">Bandra West, Mumbai</p>
-                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51800027734</p>
-                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Nestled in the heart of Bandra, this expansive 4 BHK residence boasts designer interiors, premium Italian marble, and world-class club facilities. The wrap-around balcony provides stunning 270-degree views of the vibrant neighborhood. A fully-equipped chef's kitchen and dedicated maid's quarters make this home as functional as it is beautiful. Residents also enjoy priority access to the signature clubhouse, featuring an Olympic-sized swimming pool, a professional-grade gymnasium, and a private cinema.</p>
-                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 4 Baths</span>
-                    </div>
-                </div>
-
-                <!-- Property 5 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502672260266-1c1b56112f59?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Double-Height Ceiling, Lake View Balcony, Teakwood Staircase, Premium Clubhouse, 24/7 Concierge" data-gif="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700019888" data-status="Ready to Move" data-possession="Immediate" data-towers="8 Towers" data-units="600 Units" data-developer="Hiranandani Constructions" data-floorplans="2 BHK|950 sqft|₹1.80 Cr, 3 BHK Duplex|1850 sqft|₹3.20 Cr">
-                    <div class="relative overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Duplex" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
-                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
-                    </div>
-                    <div class="flex justify-between items-end mb-2">
-                        <h3 class="text-xl font-serif text-dark">Hiranandani Estate Duplex</h3>
-                        <span class="text-gold-500 font-medium">₹3.20 Cr</span>
-                    </div>
-                    <p class="text-gray-500 text-sm mb-2">Hiranandani Estate, Thane</p>
-                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700019888</p>
-                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">A contemporary duplex apartment offering double-height ceilings, abundant natural light, and access to premium township amenities. The stunning teakwood staircase serves as a centerpiece, leading up to the private master quarters. Enjoy your morning coffee on the lake view balcony, and take advantage of the 24/7 concierge service. This residence is part of a meticulously planned community that includes international schools, high-end retail outlets, and expansive green parks right at your doorstep.</p>
-                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 3 Beds</span>
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 3 Baths</span>
-                    </div>
-                </div>
-
-                <!-- Property 6 -->
-                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622781264-4a2f12365847?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1574362844344-1406b3212d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Direct Lake Views, Infinity Pool Access, Spacious Master Suite, Sky Lounge, Advanced Security" data-gif="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800001234" data-status="Under Construction" data-possession="Jun 2025" data-towers="5 Towers" data-units="320 Units" data-developer="Lakeview Properties" data-floorplans="3 BHK|1400 sqft|₹4.20 Cr, 4 BHK|3100 sqft|₹6.75 Cr">
-                    <div class="relative overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lakeview Estate" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
-                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
-                    </div>
-                    <div class="flex justify-between items-end mb-2">
-                        <h3 class="text-xl font-serif text-dark">Powai Lakefront Residences</h3>
-                        <span class="text-gold-500 font-medium">₹6.75 Cr</span>
-                    </div>
-                    <p class="text-gray-500 text-sm mb-2">Powai, Mumbai</p>
-                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51800001234</p>
-                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Overlooking the serene Powai Lake, this premium estate features resort-style living with lush green surroundings and top-tier recreational facilities. The spacious master suite offers direct lake views, while residents enjoy exclusive access to an infinity pool and rooftop sky lounge. Advanced security systems ensure peace of mind in this prestigious community. The property is designed with sustainability in mind, incorporating rainwater harvesting, solar heating, and extensive landscaped gardens that blend seamlessly with the natural environment.</p>
-                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
-                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 5 Baths</span>
-                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Risk & Psychology</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Professional position sizing and bankroll management
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Overcoming FOMO, revenge trading, and fear
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Creating your personalized daily trading routine
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div>
-                    <span class="text-gold-500 uppercase tracking-widest text-xs font-bold mb-3 block">About Us</span>
-                    <h2 class="text-4xl font-serif text-dark mb-6 leading-tight">Connecting you with luxury homes and the best real estate opportunities.</h2>
-                    <div class="w-16 h-0.5 bg-gold-400 mb-8"></div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        At ThaneHome, we provide expert real estate services tailored for buying, selling, and investing in premium properties. Whether you are looking for a dream residence or a strategic asset, our deep market knowledge ensures you make the right choice.
-                    </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        Discover the best homes and high-return real estate investments. We pride ourselves on delivering a seamless, modern, and accessible experience for every client, guiding you through new projects and exclusive listings with unparalleled professionalism.
-                    </p>
-                    <button onclick="openModal()" class="inline-block bg-dark text-white hover:bg-gold-500 px-8 py-3 uppercase tracking-wider text-sm transition-colors duration-300">Contact Enquiry</button>
-                </div>
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Luxury Interior" class="w-full h-[500px] object-cover shadow-2xl" referrerPolicy="no-referrer">
-                    <div class="absolute -bottom-8 -left-8 bg-white p-8 shadow-xl hidden md:block">
-                        <p class="text-4xl font-serif text-gold-500 mb-1">15+</p>
-                        <p class="text-sm text-gray-500 uppercase tracking-wider font-medium">Years of Excellence</p>
+    <!-- Instructor -->
+    <section id="instructor" class="py-24 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brand-100 rounded-3xl transform translate-x-4 translate-y-4"></div>
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=1000" alt="Instructor" class="relative rounded-3xl shadow-xl object-cover aspect-[4/5] w-full max-w-md mx-auto" referrerPolicy="no-referrer">
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-gold-500 uppercase tracking-widest text-xs font-bold mb-3 block">Client Testimonials</span>
-                <h2 class="text-4xl font-serif text-dark mb-4">What Our Clients Say</h2>
-                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Review 1 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <div class="flex text-gold-400 mb-4">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic leading-relaxed">"Working with this agency was an absolute pleasure. They understood exactly what we were looking for in a 3 BHK apartment in Thane. Their knowledge of the local market and upcoming infrastructure projects helped us make a highly informed decision. They negotiated a great price and handled all the paperwork seamlessly."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-dark text-white rounded-full flex items-center justify-center font-serif text-xl mr-4">R</div>
-                        <div>
-                            <h4 class="font-medium text-dark">Rajesh Sharma</h4>
-                            <p class="text-xs text-gray-500 uppercase tracking-wider">Homebuyer, Thane</p>
+                <div class="lg:w-1/2">
+                    <div class="text-brand-600 font-bold tracking-wider uppercase mb-3 text-sm">Meet Your Mentor</div>
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Varun Sehdev</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Former institutional trader turned independent prop-firm funded trader. After managing multi-crore portfolios for a major hedge fund in Mumbai, Varun transitioned to retail trading to build a lifestyle of freedom.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+                        He has spent the last 5 years distilling complex institutional algorithms into a simple, rule-based system that anyone can follow. His mission is to help 10,000 Indian traders achieve consistent profitability.
+                    </p>
+                    <div class="flex gap-6">
+                        <div class="bg-gray-50 px-6 py-4 rounded-2xl border border-gray-100">
+                            <div class="font-extrabold text-gray-900 text-2xl mb-1">₹10Cr+</div>
+                            <div class="text-sm font-medium text-gray-500">Funded Capital</div>
+                        </div>
+                        <div class="bg-gray-50 px-6 py-4 rounded-2xl border border-gray-100">
+                            <div class="font-extrabold text-gray-900 text-2xl mb-1">15y</div>
+                            <div class="text-sm font-medium text-gray-500">Trading Experience</div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Review 2 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <div class="flex text-gold-400 mb-4">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="py-24 bg-[#FAFAFA]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">What Our Students Say</h2>
+                <p class="text-lg text-gray-500">Join thousands of successful traders who have transformed their trading journey with our workshop.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 card-shadow">
+                    <div class="flex items-center gap-1 mb-6 text-yellow-400">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
-                    <p class="text-gray-600 mb-6 italic leading-relaxed">"I was looking for a premium villa in Pune and was introduced to this team. They were incredibly patient, showing us multiple properties over two months without any pressure. Their transparency regarding the builder's track record and legal clearances gave us immense confidence. Highly recommend their services for anyone looking for luxury real estate."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-dark text-white rounded-full flex items-center justify-center font-serif text-xl mr-4">P</div>
+                    <p class="text-gray-700 mb-8 leading-relaxed">"This workshop completely changed how I look at the markets. The sniper entry system is incredibly precise. I passed my first prop firm challenge just 2 weeks after attending!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold text-lg">AK</div>
                         <div>
-                            <h4 class="font-medium text-dark">Priya Patel</h4>
-                            <p class="text-xs text-gray-500 uppercase tracking-wider">Property Investor, Pune</p>
+                            <div class="font-bold text-gray-900">Arjun K.</div>
+                            <div class="text-sm font-medium text-gray-500">Funded Trader</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 card-shadow">
+                    <div class="flex items-center gap-1 mb-6 text-yellow-400">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <p class="text-gray-700 mb-8 leading-relaxed">"I've bought so many courses before, but Varun's teaching style is unmatched. He simplifies complex institutional concepts. The live trading sessions were eye-opening."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold text-lg">PS</div>
+                        <div>
+                            <div class="font-bold text-gray-900">Priya S.</div>
+                            <div class="text-sm font-medium text-gray-500">Retail Trader</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Review 3 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                    <div class="flex text-gold-400 mb-4">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 card-shadow">
+                    <div class="flex items-center gap-1 mb-6 text-yellow-400">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
-                    <p class="text-gray-600 mb-6 italic leading-relaxed">"As an NRI investor, I needed someone trustworthy on the ground. This team exceeded all expectations. They not only helped me identify a high-yield commercial property in Navi Mumbai but also managed the entire registration process via power of attorney. Their post-sales support in finding a reliable tenant was the icing on the cake."</p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-dark text-white rounded-full flex items-center justify-center font-serif text-xl mr-4">V</div>
+                    <p class="text-gray-700 mb-8 leading-relaxed">"Finally, a course that actually focuses on risk management and psychology. The technicals are great, but the mindset training is what made me profitable."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold text-lg">RM</div>
                         <div>
-                            <h4 class="font-medium text-dark">Vikram Singh</h4>
-                            <p class="text-xs text-gray-500 uppercase tracking-wider">NRI Investor, Dubai</p>
+                            <div class="font-bold text-gray-900">Rahul M.</div>
+                            <div class="text-sm font-medium text-gray-500">Full-time Trader</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    </div>
 
-    <!-- Property Detail View (Product Page) -->
-    <div id="property-view" class="hidden pt-28 pb-24 bg-white min-h-screen">
-        <div class="max-w-7xl mx-auto px-6">
-            <button onclick="closeProperty(true)" class="flex items-center text-gray-500 hover:text-gold-500 transition-colors mb-8">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Back to Listings
-            </button>
-
-            <!-- Sticky Property Navigation -->
-            <div class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 mb-8 py-4 -mx-6 px-6 shadow-sm hidden md:block">
-                <div class="flex space-x-6 overflow-x-auto hide-scrollbar">
-                    <button onclick="scrollToSection('sec-rera')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">RERA Details</button>
-                    <button onclick="scrollToSection('sec-project-info')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Project Info</button>
-                    <button onclick="scrollToSection('sec-overview')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Overview</button>
-                    <button onclick="scrollToSection('sec-amenities')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Amenities</button>
-                    <button onclick="scrollToSection('sec-floor-plans')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Floor Plans</button>
-                    <button onclick="scrollToSection('sec-map')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Location Map</button>
-                    <button onclick="scrollToSection('sec-developer')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Developer</button>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <img id="pp-img" src="" alt="Property" class="w-full h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg mb-4" referrerPolicy="no-referrer">
-                    <div id="pp-gallery" class="grid grid-cols-5 gap-2">
-                        <!-- Thumbnails will be injected here -->
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center">
-                    <div class="uppercase tracking-wider text-xs font-bold text-gold-500 mb-2">For Sale</div>
-                    <h2 id="pp-title" class="text-4xl font-serif text-dark mb-4"></h2>
-                    <div id="pp-price" class="text-3xl text-gold-500 font-medium mb-6"></div>
-                    <p class="text-gray-500 mb-2 flex items-center">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        <span id="pp-location"></span>
-                    </p>
-                    <p class="text-sm text-gray-400 font-mono mb-8" id="pp-rera"></p>
-                    
-                    <div class="grid grid-cols-2 gap-4 border-y border-gray-100 py-6 mb-8">
-                        <div class="text-center border-r border-gray-100">
-                            <div class="text-gray-400 text-sm mb-1">Bedrooms</div>
-                            <div id="pp-beds" class="font-medium text-dark text-lg"></div>
-                        </div>
-                        <div class="text-center">
-                            <div class="text-gray-400 text-sm mb-1">Bathrooms</div>
-                            <div id="pp-baths" class="font-medium text-dark text-lg"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex space-x-4">
-                        <button onclick="openModal()" class="flex-1 bg-dark text-white hover:bg-gold-500 py-4 uppercase tracking-wider text-sm font-medium transition-colors duration-300 text-center rounded-lg">Enquire Now</button>
-                        <a href="https://wa.me/919619135506" target="_blank" rel="noopener noreferrer" class="flex-1 border border-dark text-dark hover:bg-dark hover:text-white py-4 uppercase tracking-wider text-sm font-medium transition-colors duration-300 text-center flex items-center justify-center rounded-lg">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-                            WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Comprehensive Details Section (Single Column) -->
-            <div class="mt-20 border-t border-gray-100 pt-16 max-w-4xl mx-auto space-y-16">
+    <!-- Registration CTA -->
+    <section id="register" class="py-24 bg-brand-600 relative overflow-hidden">
+        <!-- Decorative Background -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40L40 0H20L0 20M40 40V20L20 40" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="bg-white rounded-[2.5rem] p-10 md:p-16 shadow-2xl text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">Secure Your Spot Now</h2>
+                <p class="text-lg text-gray-500 mb-10 max-w-xl mx-auto">The next live workshop begins this weekend. Spaces are strictly limited to ensure all questions are answered.</p>
                 
-                <!-- 1. RERA Details -->
-                <section id="sec-rera">
-                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-100">
-                        <h3 class="text-2xl font-serif text-dark mb-4">RERA Details</h3>
-                        <p class="text-gray-600 mb-4">The project has been registered via MahaRERA registration number:</p>
-                        <p id="pp-rera-full" class="font-mono font-semibold text-dark text-xl mb-4"></p>
-                        <p class="text-sm text-gray-400">Available on the website <a href="https://maharera.mahaonline.gov.in" target="_blank" rel="noopener noreferrer" class="text-gold-500 hover:underline">https://maharera.mahaonline.gov.in</a> under registered projects.</p>
+                <div class="bg-gray-50 rounded-3xl p-8 mb-10 max-w-md mx-auto border border-gray-100">
+                    <div class="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
+                        <span class="text-gray-600 font-medium">Live Workshop Access</span>
+                        <span class="text-gray-900 font-bold">₹14,999</span>
                     </div>
-                </section>
-
-                <!-- 2. Project Information -->
-                <section id="sec-project-info">
-                    <h3 class="text-2xl font-serif text-dark mb-6">Project Information</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
-                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Status</p>
-                            <p class="font-medium text-dark text-lg" id="pp-status"></p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
-                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Possession</p>
-                            <p class="font-medium text-dark text-lg" id="pp-possession"></p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
-                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Towers</p>
-                            <p class="font-medium text-dark text-lg" id="pp-towers"></p>
-                        </div>
-                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
-                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Total Units</p>
-                            <p class="font-medium text-dark text-lg" id="pp-units"></p>
-                        </div>
+                    <div class="flex justify-between items-center mb-4 pb-4 border-b border-gray-200">
+                        <span class="text-gray-600 font-medium">Trading Plan Template</span>
+                        <span class="text-gray-900 font-bold">₹4,999</span>
                     </div>
-                </section>
-
-                <!-- 3. Overview -->
-                <section id="sec-overview">
-                    <h3 class="text-2xl font-serif text-dark mb-6">Overview</h3>
-                    <p id="pp-desc" class="text-gray-800 text-xl leading-relaxed mb-8 font-light"></p>
-                    
-                    <div id="pp-gif-container" class="rounded-xl overflow-hidden shadow-lg border border-gray-100">
-                        <img id="pp-gif" src="" alt="Property Highlight" class="w-full h-[400px] object-cover" referrerPolicy="no-referrer">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-brand-600 font-bold">Early Bird Discount</span>
+                        <span class="text-brand-600 font-bold">- ₹14,999</span>
                     </div>
-                </section>
-
-                <!-- 4. Amenities -->
-                <section id="sec-amenities">
-                    <h3 class="text-2xl font-serif text-dark mb-6">Amenities</h3>
-                    <div id="pp-features" class="flex flex-wrap gap-4">
-                        <!-- Features injected here -->
+                    <div class="flex justify-between items-center text-3xl font-black text-gray-900">
+                        <span>Total</span>
+                        <span>₹4,999</span>
                     </div>
-                </section>
+                </div>
 
-                <!-- 5. Unit Floor Plan Pricing -->
-                <section id="sec-floor-plans">
-                    <h3 class="text-2xl font-serif text-dark mb-6">Unit Floor Plan & Pricing</h3>
-                    <div class="overflow-x-auto border border-gray-100 rounded-xl shadow-sm">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="bg-gray-50 text-gray-500 text-sm uppercase tracking-wider">
-                                    <th class="p-6 font-medium border-b border-gray-100">Configuration</th>
-                                    <th class="p-6 font-medium border-b border-gray-100">Carpet Area</th>
-                                    <th class="p-6 font-medium border-b border-gray-100">Price</th>
-                                    <th class="p-6 font-medium border-b border-gray-100 text-right">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="pp-floor-plans-body" class="divide-y divide-gray-100 bg-white">
-                                <!-- Injected -->
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <!-- Location Map -->
-                <section id="sec-map">
-                    <h3 class="text-2xl font-serif text-dark mb-6">Location Map</h3>
-                    <div class="w-full h-[450px] bg-gray-200 rounded-xl overflow-hidden relative border border-gray-100 shadow-sm">
-                        <iframe id="pp-map-iframe" src="" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </section>
-
-                <!-- 6. Developer Details -->
-                <section id="sec-developer">
-                    <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
-                        <h3 class="text-2xl font-serif text-dark mb-6">Developer Details</h3>
-                        <div class="flex items-center space-x-6 mb-6">
-                            <div class="w-16 h-16 bg-dark rounded-full flex items-center justify-center flex-shrink-0 text-2xl font-serif text-gold-400">
-                                <span id="pp-dev-initial">D</span>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-medium text-dark mb-1" id="pp-dev-name">Developer Name</h4>
-                                <p class="text-sm text-gray-500 uppercase tracking-wider">Premium Real Estate Builder</p>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 mb-8 leading-relaxed">Committed to delivering high-quality residential projects with world-class amenities, innovative designs, and timely possession. Building trust through transparency and excellence.</p>
-                    </div>
-                </section>
-
-                <!-- 7. Contact Enquiry -->
-                <section id="sec-contact">
-                    <div class="bg-dark text-white p-10 rounded-xl shadow-xl relative overflow-hidden">
-                        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
-                            <div class="mb-8 md:mb-0 md:mr-8">
-                                <h3 class="text-3xl font-serif mb-3">Interested in this property?</h3>
-                                <p class="text-gray-400 text-lg max-w-lg">Get in touch with our real estate experts for more details, site visits, and exclusive offers.</p>
-                            </div>
-                            <button onclick="openModal()" class="w-full md:w-auto whitespace-nowrap bg-gold-500 hover:bg-gold-400 text-white px-10 py-5 rounded-lg text-sm font-bold transition-colors flex items-center justify-center uppercase tracking-wider shadow-lg">
-                                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
-                                Contact Enquiry
-                            </button>
-                        </div>
-                        <svg class="absolute -bottom-16 -right-16 w-80 h-80 text-white opacity-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-                    </div>
-                </section>
-
+                <form class="max-w-md mx-auto space-y-4" onsubmit="event.preventDefault(); alert('Registration successful! Check your email for details.');">
+                    <input type="text" placeholder="Full Name" required class="w-full px-6 py-4 rounded-2xl bg-white border border-gray-200 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all font-medium">
+                    <input type="email" placeholder="Email Address" required class="w-full px-6 py-4 rounded-2xl bg-white border border-gray-200 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all font-medium">
+                    <input type="tel" placeholder="Phone Number" required class="w-full px-6 py-4 rounded-2xl bg-white border border-gray-200 text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 transition-all font-medium">
+                    <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold text-lg py-4 rounded-2xl transition-all transform hover:-translate-y-1 premium-shadow mt-4">
+                        Complete Registration - ₹4,999
+                    </button>
+                    <p class="text-gray-400 text-sm mt-6 font-medium">🔒 Secure 256-bit encrypted checkout. 100% Money-Back Guarantee.</p>
+                </form>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-dark text-white py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div class="md:col-span-1">
-                    <a href="#" class="text-2xl font-serif tracking-wider mb-4 inline-block">THANE HOME<span class="text-gold-400">.</span></a>
-                    <p class="text-gray-500 text-sm leading-relaxed max-w-xs">Your trusted partner for premium homes and smart property investments in Thane, Mumbai & Navi Mumbai.</p>
+    <footer class="bg-gray-900 py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                 </div>
-                <div>
-                    <h4 class="text-lg font-serif mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="#home" class="hover:text-gold-400 transition-colors">Home</a></li>
-                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Properties</a></li>
-                        <li><a href="#about" class="hover:text-gold-400 transition-colors">About Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-serif mb-4">Contact Us</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li>
-                            <a href="tel:+919619135506" class="hover:text-gold-400 transition-colors flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                                +91 96191 35506
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://wa.me/919619135506" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-                                WhatsApp
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:hello@thanehome.com" class="hover:text-gold-400 transition-colors flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                hello@thanehome.com
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-lg font-serif mb-4">Legal</h4>
-                    <ul class="space-y-2 text-sm text-gray-500">
-                        <li><a href="#" onclick="openTerms(); return false;" class="hover:text-gold-400 transition-colors">Terms & Conditions</a></li>
-                        <li><a href="#privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a></li>
-                        <li><a href="#disclaimer" class="hover:text-gold-400 transition-colors">Disclaimer</a></li>
-                    </ul>
-                </div>
+                <span class="font-bold text-xl tracking-tight text-white">Trending<span class="text-brand-500">Wick</span></span>
             </div>
-            
-            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-                <div class="mb-4 md:mb-0">
-                    &copy; 2026 Thane Home. All rights reserved.
-                </div>
-                <div class="flex space-x-4">
-                    <a href="https://www.instagram.com/prop_advesers_realtors?igsh=Z2NmcHJlNXQzZjN6" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors" aria-label="Instagram">Instagram</a>
-                    <a href="https://www.facebook.com/share/1BH6URH3tT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors" aria-label="Facebook">Facebook</a>
-                </div>
+            <div class="text-gray-500 text-sm text-center md:text-left font-medium">
+                &copy; 2026 Trending Wick Workshop. All rights reserved.<br>
+                <span class="text-xs mt-2 block font-normal text-gray-600">Disclaimer: Trading foreign exchange carries a high level of risk and may not be suitable for all investors. Past performance is not indicative of future results.</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-500 hover:text-white font-medium transition-colors">Terms</a>
+                <a href="#" class="text-gray-500 hover:text-white font-medium transition-colors">Privacy</a>
+                <a href="#" class="text-gray-500 hover:text-white font-medium transition-colors">Contact</a>
             </div>
         </div>
     </footer>
 
-    <!-- Terms and Conditions View -->
-    <div id="terms-view" class="hidden pt-28 pb-24 bg-white min-h-screen">
-        <div class="max-w-4xl mx-auto px-6">
-            <button onclick="closeTerms()" class="flex items-center text-gray-500 hover:text-gold-500 transition-colors mb-8">
-                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                Back to Home
-            </button>
-            <h2 class="text-4xl font-serif text-dark mb-8">Terms & Conditions</h2>
-            <div class="prose text-gray-600 space-y-6">
-                <p>Welcome to Thane Home. By accessing our website, you agree to these terms and conditions. Please read them carefully.</p>
-                
-                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">1. Acceptance of Terms</h3>
-                <p>By accessing and using the Thane Home website, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using this website's particular services, you shall be subject to any posted guidelines or rules applicable to such services.</p>
-                
-                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">2. Property Information and Disclaimer</h3>
-                <p>All property details, including prices, dimensions, floor plans, amenities, and availability, are subject to change without notice. We strive for accuracy but cannot guarantee that all information is completely up-to-date or error-free. The images, renders, and videos are for representational purposes only.</p>
-                
-                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">3. User Obligations</h3>
-                <p>Users agree to use this website for lawful purposes only and not to engage in any conduct that restricts or inhibits anyone else's use or enjoyment of the site. You agree not to use the site to send unsolicited commercial emails or "spam".</p>
-
-                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">4. Intellectual Property</h3>
-                <p>The site and its original content, features, and functionality are owned by Thane Home and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
-
-                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">5. Limitation of Liability</h3>
-                <p>In no event shall Thane Home, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the website.</p>
-
-                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">6. Changes to Terms</h3>
-                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. What constitutes a material change will be determined at our sole discretion.</p>
-
-                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">7. Contact Us</h3>
-                <p>If you have any questions about these Terms, please contact us at hello@thanehome.com or call us at +91 96191 35506.</p>
-            </div>
-        </div>
-    </div>
-
-    <section id="privacy" class="hidden py-24 bg-white">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-serif text-dark mb-6">Privacy Policy</h2>
-            <div class="prose text-gray-600">
-                <p class="mb-4">Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.</p>
-                <h3 class="text-xl font-medium text-dark mt-6 mb-3">1. Information Collection</h3>
-                <p class="mb-4">We collect information you provide directly to us, such as when you fill out a contact form or subscribe to our newsletter.</p>
-                <h3 class="text-xl font-medium text-dark mt-6 mb-3">2. Use of Information</h3>
-                <p class="mb-4">We use the information we collect to provide, maintain, and improve our services, and to communicate with you about properties that may interest you.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Floating Action Buttons -->
-    <div class="floating-container">
-        <!-- Enquiry Button -->
-        <button onclick="openModal()" class="float-btn enquiry-btn" aria-label="Contact Enquiry">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-            </svg>
-            <span>Enquiry</span>
-        </button>
-        <!-- Call Button -->
-        <a href="tel:+919619135506" class="float-btn call-btn" aria-label="Call Us">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-            </svg>
-            <span>Call</span>
-        </a>
-        <!-- WhatsApp Button -->
-        <a href="https://wa.me/919619135506" target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-btn" aria-label="Chat on WhatsApp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-            </svg>
-            <span>WhatsApp</span>
-        </a>
-    </div>
-
-    <!-- Enquiry Modal -->
-    <div id="enquiryModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <div class="bg-white w-full max-w-md mx-4 rounded-xl shadow-2xl overflow-hidden relative transform transition-transform duration-300 scale-95" id="modalContent">
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-dark transition-colors" aria-label="Close Modal">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-            
-            <div class="p-8">
-                <h3 class="text-2xl font-serif text-dark mb-2">Request Information</h3>
-                <p class="text-gray-500 text-sm mb-6">Fill out the form below and our real estate experts will get in touch with you shortly.</p>
-                
-                <form id="enquiryForm" class="space-y-4" onsubmit="submitForm(event)">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                        <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all">
-                    </div>
-                    <div>
-                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                        <div class="flex">
-                            <span class="inline-flex items-center px-4 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 rounded-l-lg text-sm font-medium">+91</span>
-                            <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" minlength="10" maxlength="10" title="Please enter a valid 10-digit Indian phone number" placeholder="10-digit mobile number" class="w-full px-4 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                        <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message (Optional)</label>
-                        <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all resize-none"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-dark text-white hover:bg-gold-500 py-3 rounded-lg uppercase tracking-wider text-sm font-medium transition-colors duration-300 mt-2">Submit Enquiry</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const modal = document.getElementById('enquiryModal');
-        const modalContent = document.getElementById('modalContent');
-        const form = document.getElementById('enquiryForm');
-
-        function openModal() {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            // Small delay to allow display:flex to apply before animating opacity/transform
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            // Wait for animation to finish before hiding
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-            }, 300);
-        }
-
-        // Close modal when clicking outside the content box
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        // Handle form submission
-        function submitForm(e) {
-            e.preventDefault();
-            // In a real app, you would send this data to a server here.
-            alert('Thank you for your enquiry! Our team will contact you shortly.');
-            form.reset();
-            closeModal();
-        }
-
-        // Handle Property Page Navigation
-        function openProperty(el) {
-            const imagesAttr = el.getAttribute('data-images');
-            let images = [];
-            if(imagesAttr) {
-                images = imagesAttr.split(',');
-            } else {
-                images = [el.querySelector('img').src];
-            }
-            
-            const title = el.querySelector('h3').textContent.trim();
-            const price = el.querySelector('.text-gold-500').textContent.trim();
-            const location = el.querySelectorAll('p')[0].textContent.trim();
-            const rera = el.getAttribute('data-rera');
-            const desc = el.querySelectorAll('p')[2].textContent.trim();
-            const gif = el.getAttribute('data-gif');
-            const spans = el.querySelectorAll('.flex.space-x-6 span');
-            
-            const beds = spans[0].textContent.trim();
-            const baths = spans[1].textContent.trim();
-            
-            document.getElementById('pp-img').src = images[0];
-            
-            // Build gallery
-            const galleryContainer = document.getElementById('pp-gallery');
-            galleryContainer.innerHTML = '';
-            images.forEach((imgSrc, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = imgSrc;
-                thumb.className = `w-full h-16 md:h-20 object-cover rounded cursor-pointer border-2 transition-all ${index === 0 ? 'border-gold-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-100'}`;
-                thumb.onclick = function() {
-                    document.getElementById('pp-img').src = imgSrc;
-                    Array.from(galleryContainer.children).forEach(child => {
-                        child.classList.remove('border-gold-500', 'opacity-100');
-                        child.classList.add('border-transparent', 'opacity-60');
-                    });
-                    this.classList.remove('border-transparent', 'opacity-60');
-                    this.classList.add('border-gold-500', 'opacity-100');
-                };
-                galleryContainer.appendChild(thumb);
-            });
-            document.getElementById('pp-title').textContent = title;
-            document.getElementById('pp-price').textContent = price;
-            
-            // Build features
-            const featuresAttr = el.getAttribute('data-features');
-            const featuresList = document.getElementById('pp-features');
-            featuresList.innerHTML = '';
-            if (featuresAttr) {
-                const features = featuresAttr.split(',');
-                features.forEach(f => {
-                    const span = document.createElement('span');
-                    span.className = 'inline-flex items-center px-4 py-2 rounded-full bg-gold-50 text-gold-600 font-semibold text-sm border border-gold-200 shadow-sm';
-                    span.innerHTML = `<svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>${f.trim()}`;
-                    featuresList.appendChild(span);
-                });
-            }
-            document.getElementById('pp-location').textContent = location;
-            if (rera) {
-                document.getElementById('pp-rera').textContent = `RERA Registration No: ${rera}`;
-                document.getElementById('pp-rera-full').textContent = rera;
-            } else {
-                document.getElementById('pp-rera').textContent = '';
-                document.getElementById('pp-rera-full').textContent = 'Not Available';
-            }
-            document.getElementById('pp-desc').textContent = desc;
-            
-            // Populate Project Info
-            document.getElementById('pp-status').textContent = el.getAttribute('data-status') || 'N/A';
-            document.getElementById('pp-possession').textContent = el.getAttribute('data-possession') || 'N/A';
-            document.getElementById('pp-towers').textContent = el.getAttribute('data-towers') || 'N/A';
-            document.getElementById('pp-units').textContent = el.getAttribute('data-units') || 'N/A';
-            
-            // Populate Developer
-            const devName = el.getAttribute('data-developer') || 'Premium Builder';
-            document.getElementById('pp-dev-name').textContent = devName;
-            document.getElementById('pp-dev-initial').textContent = devName.charAt(0);
-            
-            // Populate Map
-            const mapIframe = document.getElementById('pp-map-iframe');
-            mapIframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(location)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
-            
-            // Populate Floor Plans
-            const floorplansAttr = el.getAttribute('data-floorplans');
-            const fpBody = document.getElementById('pp-floor-plans-body');
-            fpBody.innerHTML = '';
-            if (floorplansAttr) {
-                const plans = floorplansAttr.split(',');
-                plans.forEach(plan => {
-                    const [config, area, price] = plan.split('|');
-                    const tr = document.createElement('tr');
-                    tr.className = "hover:bg-gray-50 transition-colors";
-                    tr.innerHTML = `
-                        <td class="p-4 font-medium text-dark">${config ? config.trim() : ''}</td>
-                        <td class="p-4 text-gray-600">${area ? area.trim() : ''}</td>
-                        <td class="p-4 text-gold-500 font-medium">${price ? price.trim() : ''}</td>
-                        <td class="p-4 text-right">
-                            <button onclick="openModal()" class="text-sm text-dark hover:text-gold-500 font-medium underline">Enquire</button>
-                        </td>
-                    `;
-                    fpBody.appendChild(tr);
-                });
-            }
-            
-            const gifContainer = document.getElementById('pp-gif-container');
-            if (gif) {
-                document.getElementById('pp-gif').src = gif;
-                gifContainer.classList.remove('hidden');
-            } else {
-                gifContainer.classList.add('hidden');
-            }
-            
-            document.getElementById('pp-beds').textContent = beds;
-            document.getElementById('pp-baths').textContent = baths;
-            
-            document.getElementById('main-view').classList.add('hidden');
-            document.getElementById('property-view').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function closeProperty(scrollToProperties = false) {
-            document.getElementById('property-view').classList.add('hidden');
-            document.getElementById('main-view').classList.remove('hidden');
-            if (scrollToProperties) {
-                window.scrollTo(0, document.getElementById('properties').offsetTop - 80);
-            }
-        }
-
-        function openTerms() {
-            document.getElementById('main-view').classList.add('hidden');
-            document.getElementById('property-view').classList.add('hidden');
-            document.getElementById('terms-view').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function closeTerms() {
-            document.getElementById('terms-view').classList.add('hidden');
-            document.getElementById('main-view').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                // Offset for the sticky header + main navbar
-                const y = section.getBoundingClientRect().top + window.scrollY - 140;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }
-        }
-    </script>
 </body>
 </html>

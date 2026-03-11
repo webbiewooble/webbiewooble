@@ -1,594 +1,983 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TW-RS 2.0 – Institutional Price Action Framework</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS via CDN for single-file setup -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Tailwind Configuration -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            heading: ['Montserrat', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              dark: '#0B1F3A',
-              darker: '#08162b',
-              card: '#12294d',
-              gold: '#D4AF37',
-              goldHover: '#F3C63A',
-              light: '#f8fafc'
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thane Home | Premium Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: {
+                            400: '#D4AF37',
+                            500: '#AA8C2C',
+                        },
+                        dark: '#111111'
+                    }
+                }
             }
-          },
-          animation: {
-            'chart-move': 'chartMove 8s linear infinite',
-            'move-up': 'moveUp 6s linear infinite',
-          },
-          keyframes: {
-            chartMove: {
-              '0%': { left: '-20%', width: '0' },
-              '50%': { width: '60%' },
-              '100%': { left: '120%', width: '0' },
-            },
-            moveUp: {
-              '0%': { transform: 'translateY(0)' },
-              '100%': { transform: 'translateY(-200px)' },
-            }
-          }
         }
-      }
-    }
-  </script>
-
-  <!-- Custom CSS for specific effects -->
-  <style>
-    body {
-      background-color: #0B1F3A;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
-    .glass-card {
-      background: rgba(18, 41, 77, 0.7);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(212, 175, 55, 0.1);
-    }
-    .gold-gradient-text {
-      background: linear-gradient(to right, #D4AF37, #FFF2CD, #D4AF37);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      background-size: 200% auto;
-      animation: shine 3s linear infinite;
-    }
-    @keyframes shine {
-      to {
-        background-position: 200% center;
-      }
-    }
-  </style>
-</head>
-<body class="antialiased selection:bg-brand-gold selection:text-brand-darker">
-
-  <!-- Top Navigation / Social Bar -->
-  <header class="absolute top-0 left-0 w-full z-50 px-5 md:px-8 py-5 flex justify-between items-center">
-    <a href="#" class="block hover:opacity-90 transition-opacity" aria-label="TrendingWick Home">
-      <svg viewBox="0 0 320 100" class="h-10 md:h-14 w-auto" xmlns="http://www.w3.org/2000/svg">
-        <!-- Hand / Outer Circle -->
-        <path d="M 50 95 C 20 95 5 70 5 45 C 5 20 25 5 50 5 C 65 5 75 10 85 20 L 78 26 C 70 18 60 14 50 14 C 30 14 15 28 15 45 C 15 65 28 82 48 82 C 55 82 62 80 68 76 C 70 80 75 84 80 86 C 70 92 60 95 50 95 Z" fill="#22c55e"/>
-        <!-- Fingers detail -->
-        <path d="M 65 80 C 75 85 85 80 95 70 L 90 65 C 82 72 75 75 68 72 Z" fill="#22c55e"/>
-        <path d="M 75 88 C 85 85 92 78 98 70 L 93 65 C 88 72 82 78 75 80 Z" fill="#22c55e"/>
-        <!-- Bars -->
-        <rect x="25" y="40" width="9" height="25" fill="#22c55e" rx="1"/>
-        <rect x="38" y="30" width="9" height="35" fill="#22c55e" rx="1"/>
-        <rect x="51" y="20" width="9" height="45" fill="#22c55e" rx="1"/>
-        <!-- Red Arrow -->
-        <polyline points="18,60 40,35 53,48 78,22" fill="none" stroke="#ef4444" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-        <polygon points="92,8 70,15 85,30" fill="#ef4444"/>
-        <!-- Coin -->
-        <circle cx="43" cy="72" r="12" fill="#0B1F3A" stroke="#22c55e" stroke-width="2"/>
-        <circle cx="43" cy="72" r="9" fill="none" stroke="#22c55e" stroke-width="1" stroke-dasharray="2 1"/>
-        <text x="43" y="77" font-family="Montserrat, sans-serif" font-size="14" font-weight="800" fill="#22c55e" text-anchor="middle">₿</text>
-        <!-- Text: Trending -->
-        <text x="100" y="48" font-family="Montserrat, sans-serif" font-size="42" font-weight="800" fill="#22c55e" letter-spacing="-1">Trending</text>
-        <!-- Text: WICK -->
-        <text x="102" y="82" font-family="Montserrat, sans-serif" font-size="32" font-weight="800" fill="#ef4444" letter-spacing="1">WICK</text>
-        <!-- Red Lines -->
-        <rect x="195" y="66" width="105" height="4" fill="#ef4444" rx="2"/>
-        <rect x="195" y="76" width="105" height="4" fill="#ef4444" rx="2"/>
-      </svg>
-    </a>
-    <div class="flex items-center space-x-5 md:space-x-6">
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/trendingwick?igsh=YW5tNzFsbDR0NWI0" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-brand-gold transition-colors transform hover:scale-110" aria-label="Instagram">
-        <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-      </a>
-      <!-- YouTube -->
-      <a href="https://youtube.com/@trendingwick?si=Qi8cYFI8EwPG979N" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-brand-gold transition-colors transform hover:scale-110" aria-label="YouTube">
-        <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      </a>
-      <!-- Telegram -->
-      <a href="https://t.me/trendingwick" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-brand-gold transition-colors transform hover:scale-110" aria-label="Telegram">
-        <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z"/></svg>
-      </a>
-      <!-- WhatsApp -->
-      <a href="https://wa.me/919220507553" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-brand-gold transition-colors transform hover:scale-110" aria-label="WhatsApp">
-        <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      </a>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-4 md:px-6 py-16 md:py-20 overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 z-0 opacity-30 pointer-events-none">
-      <div class="absolute bottom-[-50px] w-[2px] h-[120%] bg-brand-gold/20 left-[10%] animate-move-up"></div>
-      <div class="absolute bottom-[-50px] w-[2px] h-[120%] bg-brand-gold/20 left-[25%] animate-move-up" style="animation-delay: 1s;"></div>
-      <div class="absolute bottom-[-50px] w-[2px] h-[120%] bg-brand-gold/20 left-[40%] animate-move-up" style="animation-delay: 2s;"></div>
-      <div class="absolute bottom-[-50px] w-[2px] h-[120%] bg-brand-gold/20 left-[55%] animate-move-up" style="animation-delay: 3s;"></div>
-      <div class="absolute bottom-[-50px] w-[2px] h-[120%] bg-brand-gold/20 left-[70%] animate-move-up" style="animation-delay: 4s;"></div>
-      <div class="absolute bottom-[-50px] w-[2px] h-[120%] bg-brand-gold/20 left-[85%] animate-move-up" style="animation-delay: 5s;"></div>
-
-      <div class="absolute h-[2px] bg-brand-gold top-[60%] animate-chart-move shadow-[0_0_10px_#D4AF37]"></div>
-      <div class="absolute h-[2px] bg-brand-gold top-[45%] animate-chart-move shadow-[0_0_10px_#D4AF37]" style="animation-delay: 2.5s;"></div>
-      <div class="absolute h-[2px] bg-brand-gold top-[75%] animate-chart-move shadow-[0_0_10px_#D4AF37]" style="animation-delay: 5s;"></div>
-    </div>
-
-    <div class="relative z-10 max-w-4xl mx-auto mt-8 md:mt-0">
-      <div class="inline-block mb-4 md:mb-6 px-4 py-1.5 md:px-5 md:py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs md:text-sm font-semibold tracking-wide uppercase">
-        Created by Varun Sehdev
-      </div>
-      <h1 class="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight">
-        Learn to Read the Market Through <br/>
-        <span class="gold-gradient-text">Price • Structure • Time</span>
-      </h1>
-      <p class="text-base md:text-xl lg:text-2xl text-slate-300 mb-8 md:mb-10 font-light max-w-2xl mx-auto px-2">
-        TW-RS 2.0 – The ultimate Institutional Price Action Framework for serious traders.
-      </p>
-      <a href="https://forms.gle/Q4KFp8N482mS3R6W8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-bold text-brand-darker bg-brand-gold rounded-lg hover:bg-brand-goldHover transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(212,175,55,0.5)]">
-        Apply for Next Batch
-        <svg class="w-4 h-4 md:w-5 md:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- Problem Section -->
-  <section class="py-16 md:py-24 bg-brand-light text-brand-darker px-5 md:px-6">
-    <div class="max-w-5xl mx-auto text-center">
-      <h2 class="font-heading text-3xl md:text-5xl font-bold mb-4 md:mb-8">Why Most Traders Struggle</h2>
-      <p class="text-base md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-        Most traders rely on lagging indicators without context, random entries, and emotional decision making. This leads to inconsistent results and blown accounts. <strong class="text-brand-darker">Markets are not random.</strong> Price moves through liquidity, structure shifts, and timing cycles.
-      </p>
-    </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="py-16 md:py-24 px-5 md:px-6 relative">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-10 md:mb-16">
-        <h2 class="font-heading text-3xl md:text-5xl font-bold mb-3 md:mb-4">What Is TW-RS 2.0?</h2>
-        <p class="text-slate-400 text-base md:text-lg">A complete methodology to decode the market's true intentions.</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-        <!-- Cards -->
-        <div class="glass-card p-6 md:p-8 rounded-2xl hover:border-brand-gold/50 transition-colors">
-          <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4 md:mb-6 text-brand-gold">
-            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-          </div>
-          <h3 class="font-heading text-lg md:text-xl font-bold mb-2 md:mb-3">Pinpoint Reversal Zones</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Identify high-probability turning points before they happen using the TW-RS zones.</p>
-        </div>
-
-        <div class="glass-card p-6 md:p-8 rounded-2xl hover:border-brand-gold/50 transition-colors">
-          <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4 md:mb-6 text-brand-gold">
-            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-          </div>
-          <h3 class="font-heading text-lg md:text-xl font-bold mb-2 md:mb-3">Liquidity Behaviour</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Understand where retail stops reside and how institutions engineer liquidity pools.</p>
-        </div>
-
-        <div class="glass-card p-6 md:p-8 rounded-2xl hover:border-brand-gold/50 transition-colors">
-          <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4 md:mb-6 text-brand-gold">
-            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-          </div>
-          <h3 class="font-heading text-lg md:text-xl font-bold mb-2 md:mb-3">Structure Manipulation</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Spot fake breakouts and market maker traps designed to induce the wrong side.</p>
-        </div>
-
-        <div class="glass-card p-6 md:p-8 rounded-2xl hover:border-brand-gold/50 transition-colors">
-          <div class="w-10 h-10 md:w-12 md:h-12 bg-brand-gold/20 rounded-lg flex items-center justify-center mb-4 md:mb-6 text-brand-gold">
-            <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          </div>
-          <h3 class="font-heading text-lg md:text-xl font-bold mb-2 md:mb-3">Time Cycle Theory</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Master the 'when' of trading. Align your entries with algorithmic time windows.</p>
-        </div>
-      </div>
-
-      <!-- Chart Example -->
-      <div class="mt-10 md:mt-16 w-full rounded-2xl border border-brand-gold/30 bg-white overflow-hidden shadow-[0_0_30px_rgba(212,175,55,0.15)] group relative">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" class="w-full h-auto object-cover group-hover:scale-[1.01] transition-transform duration-700" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;">
-          <!-- Grid -->
-          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f3fa" stroke-width="1"/>
-          </pattern>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-          
-          <!-- Top Text -->
-          <text x="10" y="20" font-size="12" fill="#787b86">TrendingWick5 created with TradingView.com, Mar 10, 2026 19:37 UTC+5:30</text>
-          <text x="10" y="40" font-size="14" fill="#131722" font-weight="bold">Gold Spot / U.S. Dollar · 1 · Vantage</text>
-          <text x="260" y="40" font-size="14" fill="#f23645">O5,200.97 H5,201.10 L5,190.78 C5,191.86 -9.11 (-0.18%)</text>
-          
-          <!-- Right Axis -->
-          <rect x="1140" y="0" width="60" height="600" fill="#ffffff" stroke="#e0e3eb" stroke-width="1"/>
-          <rect x="1140" y="50" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="63" font-size="11" fill="#ffffff">00:11</text>
-          <rect x="1140" y="68" width="60" height="18" fill="#787b86"/>
-          <text x="1145" y="81" font-size="11" fill="#ffffff">5,191.63</text>
-          <rect x="1140" y="86" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="99" font-size="11" fill="#ffffff">5,191.31</text>
-          <rect x="1140" y="104" width="60" height="18" fill="#131722"/>
-          <text x="1145" y="117" font-size="11" fill="#ffffff">5,189.82</text>
-          <rect x="1140" y="122" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="135" font-size="11" fill="#ffffff">5,189.77</text>
-          <rect x="1140" y="140" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="153" font-size="11" fill="#ffffff">5,189.71</text>
-          <rect x="1140" y="158" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="171" font-size="11" fill="#ffffff">5,189.62</text>
-          <rect x="1140" y="176" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="189" font-size="11" fill="#ffffff">5,189.57</text>
-          <rect x="1140" y="194" width="60" height="18" fill="#787b86"/>
-          <text x="1145" y="207" font-size="11" fill="#ffffff">5,189.42</text>
-          <rect x="1140" y="212" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="225" font-size="11" fill="#ffffff">5,189.26</text>
-          <rect x="1140" y="230" width="60" height="18" fill="#4caf50"/>
-          <text x="1145" y="243" font-size="11" fill="#ffffff">5,188.97</text>
-          <rect x="1140" y="248" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="261" font-size="11" fill="#ffffff">5,188.77</text>
-          <rect x="1140" y="266" width="60" height="18" fill="#787b86"/>
-          <text x="1145" y="279" font-size="11" fill="#ffffff">5,188.75</text>
-          <rect x="1140" y="284" width="60" height="18" fill="#787b86"/>
-          <text x="1145" y="297" font-size="11" fill="#ffffff">5,188.60</text>
-          <rect x="1140" y="302" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="315" font-size="11" fill="#ffffff">5,188.57</text>
-          <rect x="1140" y="320" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="333" font-size="11" fill="#ffffff">5,188.32</text>
-          <rect x="1140" y="338" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="351" font-size="11" fill="#ffffff">5,188.23</text>
-          <rect x="1140" y="356" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="369" font-size="11" fill="#ffffff">5,188.15</text>
-          <rect x="1140" y="374" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="387" font-size="11" fill="#ffffff">5,188.03</text>
-          <rect x="1140" y="392" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="405" font-size="11" fill="#ffffff">5,187.78</text>
-          <rect x="1140" y="410" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="423" font-size="11" fill="#ffffff">5,187.71</text>
-          <rect x="1140" y="428" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="441" font-size="11" fill="#ffffff">5,187.63</text>
-          <rect x="1140" y="446" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="459" font-size="11" fill="#ffffff">5,187.17</text>
-          <rect x="1140" y="464" width="60" height="18" fill="#00bcd4"/>
-          <text x="1145" y="477" font-size="11" fill="#ffffff">5,187.01</text>
-          <rect x="1140" y="482" width="60" height="18" fill="#787b86"/>
-          <text x="1145" y="495" font-size="11" fill="#ffffff">5,186.88</text>
-          <rect x="1140" y="500" width="60" height="18" fill="#787b86"/>
-          <text x="1145" y="513" font-size="11" fill="#ffffff">5,186.83</text>
-          <rect x="1140" y="518" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="531" font-size="11" fill="#ffffff">5,186.42</text>
-          <rect x="1140" y="536" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="549" font-size="11" fill="#ffffff">5,186.40</text>
-          <rect x="1140" y="554" width="60" height="18" fill="#f23645"/>
-          <text x="1145" y="567" font-size="11" fill="#ffffff">5,185.93</text>
-          
-          <!-- Bottom Axis -->
-          <rect x="0" y="570" width="1140" height="30" fill="#ffffff" stroke="#e0e3eb" stroke-width="1"/>
-          <text x="20" y="590" font-size="11" fill="#131722">12:00</text>
-          <text x="80" y="590" font-size="11" fill="#131722">13:00</text>
-          <text x="140" y="590" font-size="11" fill="#131722">14:00</text>
-          <text x="200" y="590" font-size="11" fill="#131722">15:00</text>
-          <text x="260" y="590" font-size="11" fill="#131722">16:00</text>
-          <text x="320" y="590" font-size="11" fill="#131722">17:00</text>
-          <text x="380" y="590" font-size="11" fill="#131722">18:00</text>
-          <text x="440" y="590" font-size="11" fill="#131722">19:00</text>
-          <text x="500" y="590" font-size="11" fill="#131722">20:00</text>
-          <text x="560" y="590" font-size="11" fill="#131722">21:00</text>
-          <text x="620" y="590" font-size="11" fill="#131722">22:00</text>
-          <text x="680" y="590" font-size="11" fill="#131722">23:00</text>
-          <text x="740" y="590" font-size="11" fill="#131722">10</text>
-          <text x="800" y="590" font-size="11" fill="#131722">01:00</text>
-          <text x="860" y="590" font-size="11" fill="#131722">01:45</text>
-          <text x="920" y="590" font-size="11" fill="#131722">03:30</text>
-          <text x="980" y="590" font-size="11" fill="#131722">04:15</text>
-          <text x="1040" y="590" font-size="11" fill="#131722">05:00</text>
-
-          <!-- Candlesticks (Abstracted as a jagged line with some rects) -->
-          <path d="M 10 250 L 20 260 L 30 240 L 40 290 L 50 320 L 60 340 L 70 350 L 80 340 L 90 360 L 100 350 L 110 370 L 120 360 L 130 350 L 140 360 L 150 380 L 160 390 L 170 370 L 180 380 L 190 360 L 200 340 L 210 320 L 220 290 L 230 260 L 240 250 L 250 300 L 260 320 L 270 340 L 280 350 L 290 370 L 300 380 L 310 390 L 320 380 L 330 390 L 340 400 L 350 390 L 360 380 L 370 360 L 380 350 L 390 340 L 400 320 L 410 310 L 420 330 L 430 350 L 440 360 L 450 380 L 460 390 L 470 370 L 480 350 L 490 320 L 500 340 L 510 380 L 520 420 L 530 450 L 540 430 L 550 460 L 560 440 L 570 420 L 580 400 L 590 380 L 600 320 L 610 340 L 620 360 L 630 380 L 640 370 L 650 350 L 660 360 L 670 340 L 680 330 L 690 350 L 700 340 L 710 320 L 720 330 L 730 340 L 740 360 L 750 380 L 760 390 L 770 380 L 780 370 L 790 350 L 800 330 L 810 310 L 820 290 L 830 270 L 840 250 L 850 230 L 860 210 L 870 230 L 880 220 L 890 200 L 900 210 L 910 220 L 920 230 L 930 240 L 940 250 L 950 220 L 960 260 L 970 240 L 980 250 L 990 230 L 1000 210 L 1010 190 L 1020 170 L 1030 190 L 1040 180 L 1050 200 L 1060 210 L 1070 230 L 1080 250 L 1090 220 L 1100 240 L 1110 210 L 1120 230 L 1130 250" fill="none" stroke="#787b86" stroke-width="1.5" stroke-linejoin="round"/>
-          
-          <!-- Add some red/green vertical lines to simulate candles -->
-          <g stroke-width="2" opacity="0.8">
-            <line x1="40" y1="270" x2="40" y2="290" stroke="#f23645"/>
-            <line x1="50" y1="290" x2="50" y2="320" stroke="#f23645"/>
-            <line x1="220" y1="320" x2="220" y2="290" stroke="#22ab94"/>
-            <line x1="230" y1="290" x2="230" y2="260" stroke="#22ab94"/>
-            <line x1="520" y1="380" x2="520" y2="420" stroke="#f23645"/>
-            <line x1="530" y1="420" x2="530" y2="450" stroke="#f23645"/>
-            <line x1="590" y1="400" x2="590" y2="380" stroke="#22ab94"/>
-            <line x1="600" y1="380" x2="600" y2="320" stroke="#22ab94"/>
-            <line x1="850" y1="250" x2="850" y2="230" stroke="#22ab94"/>
-            <line x1="860" y1="230" x2="860" y2="210" stroke="#22ab94"/>
-            <line x1="1010" y1="210" x2="1010" y2="190" stroke="#22ab94"/>
-            <line x1="1020" y1="190" x2="1020" y2="170" stroke="#22ab94"/>
-          </g>
-
-          <!-- Colored Boxes from the image -->
-          <!-- Purple box top left -->
-          <rect x="10" y="240" width="340" height="25" fill="rgba(156, 39, 176, 0.15)" stroke="rgba(156, 39, 176, 0.5)" stroke-width="1"/>
-          <rect x="10" y="240" width="30" height="25" fill="rgba(156, 39, 176, 0.3)" stroke="rgba(156, 39, 176, 0.8)" stroke-width="1"/>
-          
-          <!-- Cyan box left -->
-          <rect x="70" y="270" width="60" height="80" fill="rgba(0, 188, 212, 0.2)" stroke="rgba(0, 188, 212, 0.5)" stroke-width="1"/>
-          
-          <!-- Blue horizontal lines left -->
-          <line x1="10" y1="320" x2="130" y2="320" stroke="#131722" stroke-width="1"/>
-          <line x1="10" y1="340" x2="130" y2="340" stroke="#22ab94" stroke-width="1"/>
-          <line x1="10" y1="350" x2="130" y2="350" stroke="#2962ff" stroke-width="1"/>
-          <line x1="10" y1="380" x2="130" y2="380" stroke="#131722" stroke-width="1"/>
-          
-          <!-- Red box bottom left -->
-          <rect x="70" y="350" width="60" height="30" fill="rgba(244, 67, 54, 0.15)" stroke="rgba(244, 67, 54, 0.3)" stroke-width="1"/>
-          
-          <!-- Cyan box middle left -->
-          <rect x="200" y="240" width="35" height="120" fill="rgba(0, 188, 212, 0.3)" stroke="rgba(0, 188, 212, 0.6)" stroke-width="1"/>
-          
-          <!-- Green box middle -->
-          <rect x="245" y="300" width="30" height="40" fill="rgba(76, 175, 80, 0.2)" stroke="rgba(76, 175, 80, 0.5)" stroke-width="1"/>
-          
-          <!-- Yellow box middle -->
-          <rect x="150" y="325" width="250" height="15" fill="rgba(255, 235, 59, 0.2)" stroke="rgba(255, 235, 59, 0.5)" stroke-width="1"/>
-          
-          <!-- Green box middle right -->
-          <rect x="400" y="305" width="20" height="45" fill="rgba(76, 175, 80, 0.3)" stroke="rgba(76, 175, 80, 0.6)" stroke-width="1"/>
-          
-          <!-- Grey box middle bottom -->
-          <rect x="300" y="345" width="55" height="60" fill="rgba(158, 158, 158, 0.3)" stroke="rgba(158, 158, 158, 0.5)" stroke-width="1"/>
-          <line x1="300" y1="345" x2="355" y2="405" stroke="#787b86" stroke-width="1" stroke-dasharray="4 4"/>
-          
-          <!-- Blue box with arrow bottom -->
-          <rect x="280" y="480" width="170" height="30" fill="rgba(33, 150, 243, 0.05)" stroke="#2962ff" stroke-width="1"/>
-          <line x1="365" y1="510" x2="365" y2="480" stroke="#2962ff" stroke-width="1"/>
-          <polygon points="365,480 362,485 368,485" fill="#2962ff"/>
-          <line x1="365" y1="495" x2="450" y2="495" stroke="#2962ff" stroke-width="1"/>
-          <polygon points="450,495 445,492 445,498" fill="#2962ff"/>
-          
-          <!-- Blue box with arrow middle right -->
-          <rect x="530" y="340" width="100" height="60" fill="rgba(33, 150, 243, 0.05)" stroke="#2962ff" stroke-width="1"/>
-          <line x1="580" y1="400" x2="580" y2="340" stroke="#2962ff" stroke-width="1"/>
-          <polygon points="580,340 577,345 583,345" fill="#2962ff"/>
-          <line x1="580" y1="370" x2="630" y2="370" stroke="#2962ff" stroke-width="1"/>
-          <polygon points="630,370 625,367 625,373" fill="#2962ff"/>
-          
-          <!-- Grey box right -->
-          <rect x="660" y="310" width="25" height="40" fill="rgba(158, 158, 158, 0.4)" stroke="rgba(158, 158, 158, 0.6)" stroke-width="1"/>
-          
-          <!-- Large Grey Box right -->
-          <rect x="740" y="230" width="120" height="140" fill="rgba(158, 158, 158, 0.4)" stroke="rgba(158, 158, 158, 0.1)" stroke-width="1"/>
-          <line x1="740" y1="370" x2="860" y2="230" stroke="#787b86" stroke-width="1" stroke-dasharray="4 4"/>
-          
-          <!-- Cyan boxes right -->
-          <rect x="790" y="315" width="130" height="15" fill="rgba(0, 188, 212, 0.2)" stroke="rgba(0, 188, 212, 0.5)" stroke-width="1"/>
-          <line x1="790" y1="322" x2="920" y2="322" stroke="#00bcd4" stroke-width="1" stroke-dasharray="4 4"/>
-          
-          <rect x="860" y="350" width="120" height="20" fill="rgba(0, 188, 212, 0.2)" stroke="rgba(0, 188, 212, 0.5)" stroke-width="1"/>
-          <line x1="860" y1="360" x2="980" y2="360" stroke="#00bcd4" stroke-width="1" stroke-dasharray="4 4"/>
-          
-          <!-- Cyan box far right -->
-          <rect x="1000" y="230" width="140" height="20" fill="rgba(0, 188, 212, 0.2)" stroke="rgba(0, 188, 212, 0.5)" stroke-width="1"/>
-          <line x1="1000" y1="240" x2="1140" y2="240" stroke="#00bcd4" stroke-width="1" stroke-dasharray="4 4"/>
-          
-          <!-- Red box bottom right -->
-          <rect x="750" y="370" width="110" height="15" fill="rgba(244, 67, 54, 0.15)" stroke="rgba(244, 67, 54, 0.3)" stroke-width="1"/>
-          
-          <!-- Vertical dotted line -->
-          <line x1="960" y1="0" x2="960" y2="570" stroke="#2962ff" stroke-width="1" stroke-dasharray="4 4"/>
-          
-          <!-- Top middle horizontal lines -->
-          <line x1="300" y1="80" x2="420" y2="80" stroke="#131722" stroke-width="1"/>
-          <line x1="300" y1="95" x2="420" y2="95" stroke="#22ab94" stroke-width="1"/>
-          <line x1="300" y1="100" x2="420" y2="100" stroke="#2962ff" stroke-width="1"/>
-          <line x1="300" y1="115" x2="420" y2="115" stroke="#131722" stroke-width="1"/>
-          
-          <!-- TradingView Logo bottom left -->
-          <g transform="translate(10, 530)">
-            <path d="M 0 0 L 10 0 L 15 10 L 20 0 L 30 0 L 20 20 L 10 20 Z" fill="#131722"/>
-            <text x="35" y="15" font-size="16" font-weight="bold" fill="#131722">TradingView</text>
-          </g>
-        </svg>
-        <div class="absolute inset-0 border-2 border-transparent group-hover:border-brand-gold/50 rounded-2xl transition-colors duration-700 pointer-events-none"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Us Section -->
-  <section id="about" class="py-16 md:py-24 bg-brand-light text-brand-darker px-5 md:px-6">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4">About TrendingWick</h2>
-      </div>
-      
-      <div class="space-y-8 text-base md:text-lg text-slate-600 leading-relaxed">
-        <p>
-          TrendingWick is a trading education platform focused on developing real market understanding through price action and structured analysis.
-        </p>
-        <p>
-          Founded by Varun Sehdev, TrendingWick was created with a simple vision:<br>
-          <strong class="text-brand-darker">To help traders move beyond indicators, shortcuts, and random strategies — and instead learn how the market actually behaves.</strong>
-        </p>
-        <p>
-          At TrendingWick, the focus is on chart reading skills, market structure understanding, and disciplined trade planning.
-        </p>
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(17, 17, 17, 0.4), rgba(17, 17, 17, 0.7)), url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=2075&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .glass-nav {
+            background: rgba(17, 17, 17, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Floating Buttons */
+        .floating-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            z-index: 50;
+        }
+        .float-btn {
+            height: 50px;
+            width: 140px; /* Fixed width to make them exactly the same size */
+            padding: 0 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+        .float-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .enquiry-btn {
+            background-color: #111111;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .enquiry-btn:hover {
+            background-color: #222222;
+        }
+        .whatsapp-btn {
+            background-color: #111111;
+            color: #25D366;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .whatsapp-btn:hover {
+            background-color: #222222;
+        }
+        .call-btn {
+            background-color: #111111;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .call-btn:hover {
+            background-color: #222222;
+        }
         
-        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 my-10 text-center">
-          <h3 class="font-heading text-xl font-bold text-brand-darker mb-3">The core philosophy behind the platform is:</h3>
-          <p class="text-xl md:text-2xl font-bold text-yellow-600 mb-4">The market moves through Price, Structure and Time.</p>
-          <p class="text-base text-slate-600">
-            This principle forms the foundation of the TW-RS Framework, a structured methodology designed to help traders identify high-probability opportunities and develop independent decision-making ability.
-          </p>
-        </div>
+        /* Mobile Responsiveness for Floating Buttons */
+        @media (max-width: 768px) {
+            .floating-container {
+                bottom: 20px;
+                right: 50%;
+                transform: translateX(50%);
+                width: 94%;
+                gap: 8px;
+            }
+            .float-btn {
+                width: 100%;
+                flex: 1;
+                height: 44px;
+                padding: 0 4px;
+                font-size: 11px;
+                gap: 4px;
+            }
+            .float-btn svg {
+                width: 16px;
+                height: 16px;
+            }
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
 
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-darker mb-4">Our Approach</h3>
-          <p class="mb-4">TrendingWick emphasizes:</p>
-          <ul class="list-disc pl-6 space-y-2 mb-4">
-            <li>Institutional price behaviour understanding</li>
-            <li>Market structure analysis</li>
-            <li>Liquidity and manipulation concepts</li>
-            <li>Structured trade planning</li>
-            <li>Risk management discipline</li>
-          </ul>
-          <p>
-            The goal is not to provide signals, but to help traders develop skills that can be applied across markets and timeframes.
-          </p>
-        </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" onclick="closeProperty()" class="text-2xl text-white font-serif tracking-wider">THANE HOME<span class="text-gold-400">.</span></a>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-white tracking-wide uppercase items-center absolute left-1/2 transform -translate-x-1/2">
+                <a href="#home" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">Home</a>
+                <a href="#properties" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">Properties</a>
+                <a href="#about" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">About</a>
+                <a href="#contact" onclick="closeProperty()" class="hover:text-gold-400 transition-colors">Contact</a>
+            </div>
 
-        <div>
-          <h3 class="font-heading text-2xl font-bold text-brand-darker mb-4">What Makes TrendingWick Different</h3>
-          <p>
-            Unlike many trading communities that focus on signals or shortcuts, TrendingWick focuses on education and skill development.<br>
-            Participants learn how to analyze the market independently, rather than relying on external trade calls.
-          </p>
+            <!-- Social Icons -->
+            <div class="flex space-x-5 items-center">
+                <a href="https://www.instagram.com/prop_advesers_realtors?igsh=Z2NmcHJlNXQzZjN6" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gold-400 transition-colors" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/share/1BH6URH3tT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gold-400 transition-colors" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
+    </nav>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div class="bg-brand-darker text-white p-8 rounded-2xl text-center md:text-left">
-            <h3 class="font-heading text-xl font-bold text-brand-gold mb-3">Our Mission</h3>
-            <p class="text-slate-300">
-              To build a community of traders who approach the market with discipline, clarity, and structured thinking.
-            </p>
-          </div>
-          <div class="bg-brand-darker text-white p-8 rounded-2xl text-center md:text-left">
-            <h3 class="font-heading text-xl font-bold text-brand-gold mb-3">Our Philosophy</h3>
-            <p class="text-slate-300 font-medium mb-2">Price • Structure • Time</p>
-            <p class="text-slate-400 italic">Price Action, Unfiltered</p>
-          </div>
+    <div id="main-view">
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center hero-bg">
+        <div class="text-center px-4 max-w-4xl mx-auto mt-20">
+            <span class="text-gold-400 uppercase tracking-[0.3em] text-sm font-semibold mb-4 block">Premium Real Estate</span>
+            <h1 class="text-5xl md:text-7xl text-white font-serif mb-6 leading-tight">Find Your Place <br><span class="italic font-light">in the World</span></h1>
+            <p class="text-gray-300 text-lg md:text-xl mb-10 font-light max-w-2xl mx-auto">Your trusted partner for premium homes and smart property investments in Thane, Mumbai & Navi Mumbai.</p>
+            <a href="#properties" class="inline-block border border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-white px-10 py-4 uppercase tracking-widest text-sm transition-all duration-300">View Collection</a>
         </div>
-      </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section id="properties" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif text-dark mb-4">Featured Properties</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Property 1 -->
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912998-c57cc6b63ce7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556912167-f556f1f39fdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Spacious Master Bedroom, Panoramic City View Balcony, Modular Kitchen, Italian Marble Flooring, Smart Home Automation" data-gif="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700024567" data-status="Ready to Move" data-possession="Immediate" data-towers="4 Towers" data-units="240 Units" data-developer="Sterling Developers" data-floorplans="2 BHK|850 sqft|₹1.25 Cr, 3 BHK|1250 sqft|₹1.85 Cr">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apartment" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="text-xl font-serif text-dark">Sterling Heights 3 BHK</h3>
+                        <span class="text-gold-500 font-medium">₹1.85 Cr</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-2">Kolshet Road, Thane West</p>
+                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700024567</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Experience luxury living in this beautifully designed 3 BHK apartment featuring modern amenities, spacious balconies, and stunning city views. The expansive living area is perfect for entertaining guests, while the private master suite offers a tranquil retreat from the bustling city below. Enjoy state-of-the-art smart home features, premium Italian marble flooring throughout, and exclusive access to the residents-only sky lounge. This property redefines urban elegance with its meticulous attention to detail and unparalleled craftsmanship.</p>
+                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 3 Beds</span>
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 3 Baths</span>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600573472550-8090b5e0745e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Private Plunge Pool, Landscaped Garden, Walk-in Wardrobes, Home Theatre Room, Double-Height Living Area" data-gif="https://images.unsplash.com/photo-1584738766473-61c083514bf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P52100018902" data-status="Under Construction" data-possession="Dec 2025" data-towers="1 Tower" data-units="45 Units" data-developer="Elite Spaces" data-floorplans="4 BHK Villa|3500 sqft|₹4.50 Cr, 5 BHK Villa|4200 sqft|₹5.80 Cr">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Villa" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="text-xl font-serif text-dark">Koregaon Park Elite Villa</h3>
+                        <span class="text-gold-500 font-medium">₹4.50 Cr</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-2">Koregaon Park, Pune</p>
+                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P52100018902</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">An exquisite independent villa offering unparalleled privacy, a private garden, premium fittings, and state-of-the-art security systems. This architectural masterpiece features a double-height living area that floods the home with natural light. Step outside to your private plunge pool and beautifully landscaped garden, creating the ultimate oasis in the heart of the city. The property also includes a dedicated home theatre room, walk-in wardrobes in every bedroom, and a fully automated climate control system for year-round comfort.</p>
+                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 5 Baths</span>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491369-0e4438bf3e3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600210491892-03d54c8aaf8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687644-aac4c15cecb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Unobstructed Sea View, Private Terrace Deck, Jacuzzi in Master Bath, Floor-to-Ceiling Windows, Private Elevator Access" data-gif="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700031209" data-status="Ready to Move" data-possession="Immediate" data-towers="2 Towers" data-units="80 Units" data-developer="Palm Beach Group" data-floorplans="3 BHK|1800 sqft|₹3.50 Cr, 4 BHK Penthouse|2800 sqft|₹5.25 Cr">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="text-xl font-serif text-dark">Palm Beach Sea-Facing Penthouse</h3>
+                        <span class="text-gold-500 font-medium">₹5.25 Cr</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-2">Palm Beach Road, Navi Mumbai</p>
+                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700031209</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Wake up to breathtaking ocean panoramas in this ultra-luxurious penthouse equipped with a private terrace and smart home automation. Floor-to-ceiling windows ensure every room is bathed in natural light while offering unobstructed views of the sea. The master suite includes a spa-like bathroom with a jacuzzi, and the private elevator access guarantees absolute exclusivity. Entertain guests on your expansive deck, complete with an outdoor kitchen and lounge area, all while enjoying the gentle sea breeze.</p>
+                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 4 Baths</span>
+                    </div>
+                </div>
+
+                <!-- Property 4 -->
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Wrap-around Balcony, Chef's Kitchen, Maid's Quarters, Imported Fittings, Exclusive Club Access" data-gif="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800027734" data-status="Under Construction" data-possession="Mar 2026" data-towers="3 Towers" data-units="150 Units" data-developer="Signature Realty" data-floorplans="3 BHK|1600 sqft|₹8.50 Cr, 4 BHK|2400 sqft|₹12.50 Cr">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ultra Luxury Apartment" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="text-xl font-serif text-dark">Pali Hill Signature 4 BHK</h3>
+                        <span class="text-gold-500 font-medium">₹12.50 Cr</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-2">Bandra West, Mumbai</p>
+                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51800027734</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Nestled in the heart of Bandra, this expansive 4 BHK residence boasts designer interiors, premium Italian marble, and world-class club facilities. The wrap-around balcony provides stunning 270-degree views of the vibrant neighborhood. A fully-equipped chef's kitchen and dedicated maid's quarters make this home as functional as it is beautiful. Residents also enjoy priority access to the signature clubhouse, featuring an Olympic-sized swimming pool, a professional-grade gymnasium, and a private cinema.</p>
+                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 4 Baths</span>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502672260266-1c1b56112f59?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Double-Height Ceiling, Lake View Balcony, Teakwood Staircase, Premium Clubhouse, 24/7 Concierge" data-gif="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51700019888" data-status="Ready to Move" data-possession="Immediate" data-towers="8 Towers" data-units="600 Units" data-developer="Hiranandani Constructions" data-floorplans="2 BHK|950 sqft|₹1.80 Cr, 3 BHK Duplex|1850 sqft|₹3.20 Cr">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Duplex" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="text-xl font-serif text-dark">Hiranandani Estate Duplex</h3>
+                        <span class="text-gold-500 font-medium">₹3.20 Cr</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-2">Hiranandani Estate, Thane</p>
+                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51700019888</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">A contemporary duplex apartment offering double-height ceilings, abundant natural light, and access to premium township amenities. The stunning teakwood staircase serves as a centerpiece, leading up to the private master quarters. Enjoy your morning coffee on the lake view balcony, and take advantage of the 24/7 concierge service. This residence is part of a meticulously planned community that includes international schools, high-end retail outlets, and expansive green parks right at your doorstep.</p>
+                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 3 Beds</span>
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 3 Baths</span>
+                    </div>
+                </div>
+
+                <!-- Property 6 -->
+                <div class="group block cursor-pointer" onclick="openProperty(this)" data-images="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1584622781264-4a2f12365847?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1574362844344-1406b3212d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80,https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-features="Direct Lake Views, Infinity Pool Access, Spacious Master Suite, Sky Lounge, Advanced Security" data-gif="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" data-rera="P51800001234" data-status="Under Construction" data-possession="Jun 2025" data-towers="5 Towers" data-units="320 Units" data-developer="Lakeview Properties" data-floorplans="3 BHK|1400 sqft|₹4.20 Cr, 4 BHK|3100 sqft|₹6.75 Cr">
+                    <div class="relative overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Lakeview Estate" class="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer">
+                        <div class="absolute top-4 right-4 bg-dark text-white text-xs uppercase tracking-wider px-3 py-1">For Sale</div>
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="text-xl font-serif text-dark">Powai Lakefront Residences</h3>
+                        <span class="text-gold-500 font-medium">₹6.75 Cr</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-2">Powai, Mumbai</p>
+                    <p class="text-xs text-gray-400 mb-2 font-mono">RERA: P51800001234</p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-3">Overlooking the serene Powai Lake, this premium estate features resort-style living with lush green surroundings and top-tier recreational facilities. The spacious master suite offers direct lake views, while residents enjoy exclusive access to an infinity pool and rooftop sky lounge. Advanced security systems ensure peace of mind in this prestigious community. The property is designed with sustainability in mind, incorporating rainwater harvesting, solar heating, and extensive landscaped gardens that blend seamlessly with the natural environment.</p>
+                    <div class="flex space-x-6 text-sm text-gray-600 border-t border-gray-100 pt-4">
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg> 4 Beds</span>
+                        <span class="flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg> 5 Baths</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-gold-500 uppercase tracking-widest text-xs font-bold mb-3 block">About Us</span>
+                    <h2 class="text-4xl font-serif text-dark mb-6 leading-tight">Connecting you with luxury homes and the best real estate opportunities.</h2>
+                    <div class="w-16 h-0.5 bg-gold-400 mb-8"></div>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        At ThaneHome, we provide expert real estate services tailored for buying, selling, and investing in premium properties. Whether you are looking for a dream residence or a strategic asset, our deep market knowledge ensures you make the right choice.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Discover the best homes and high-return real estate investments. We pride ourselves on delivering a seamless, modern, and accessible experience for every client, guiding you through new projects and exclusive listings with unparalleled professionalism.
+                    </p>
+                    <button onclick="openModal()" class="inline-block bg-dark text-white hover:bg-gold-500 px-8 py-3 uppercase tracking-wider text-sm transition-colors duration-300">Contact Enquiry</button>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Luxury Interior" class="w-full h-[500px] object-cover shadow-2xl" referrerPolicy="no-referrer">
+                    <div class="absolute -bottom-8 -left-8 bg-white p-8 shadow-xl hidden md:block">
+                        <p class="text-4xl font-serif text-gold-500 mb-1">15+</p>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider font-medium">Years of Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gold-500 uppercase tracking-widest text-xs font-bold mb-3 block">Client Testimonials</span>
+                <h2 class="text-4xl font-serif text-dark mb-4">What Our Clients Say</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Review 1 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex text-gold-400 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"Working with this agency was an absolute pleasure. They understood exactly what we were looking for in a 3 BHK apartment in Thane. Their knowledge of the local market and upcoming infrastructure projects helped us make a highly informed decision. They negotiated a great price and handled all the paperwork seamlessly."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-dark text-white rounded-full flex items-center justify-center font-serif text-xl mr-4">R</div>
+                        <div>
+                            <h4 class="font-medium text-dark">Rajesh Sharma</h4>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Homebuyer, Thane</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex text-gold-400 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"I was looking for a premium villa in Pune and was introduced to this team. They were incredibly patient, showing us multiple properties over two months without any pressure. Their transparency regarding the builder's track record and legal clearances gave us immense confidence. Highly recommend their services for anyone looking for luxury real estate."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-dark text-white rounded-full flex items-center justify-center font-serif text-xl mr-4">P</div>
+                        <div>
+                            <h4 class="font-medium text-dark">Priya Patel</h4>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">Property Investor, Pune</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                    <div class="flex text-gold-400 mb-4">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic leading-relaxed">"As an NRI investor, I needed someone trustworthy on the ground. This team exceeded all expectations. They not only helped me identify a high-yield commercial property in Navi Mumbai but also managed the entire registration process via power of attorney. Their post-sales support in finding a reliable tenant was the icing on the cake."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-dark text-white rounded-full flex items-center justify-center font-serif text-xl mr-4">V</div>
+                        <div>
+                            <h4 class="font-medium text-dark">Vikram Singh</h4>
+                            <p class="text-xs text-gray-500 uppercase tracking-wider">NRI Investor, Dubai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     </div>
-  </section>
 
-  <!-- Pricing Section -->
-  <section id="apply" class="py-16 md:py-24 px-5 md:px-6 relative">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-10 md:mb-16">
-        <h2 class="font-heading text-3xl md:text-5xl font-bold mb-3 md:mb-4">Program Options</h2>
-        <p class="text-slate-400 text-base md:text-lg">Choose the path that fits your commitment level.</p>
-      </div>
+    <!-- Property Detail View (Product Page) -->
+    <div id="property-view" class="hidden pt-28 pb-24 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto px-6">
+            <button onclick="closeProperty(true)" class="flex items-center text-gray-500 hover:text-gold-500 transition-colors mb-8">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Listings
+            </button>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
-        <!-- Course Card -->
-        <div class="glass-card rounded-3xl p-6 md:p-10 flex flex-col items-center text-center border border-slate-700">
-          <h3 class="font-heading text-xl md:text-2xl font-bold mb-2">TW-RS 2.0 Course</h3>
-          <p class="text-slate-400 text-sm md:text-base mb-6 md:mb-8 md:h-12">Complete Institutional Price Action Framework training.</p>
-          <div class="text-4xl md:text-5xl font-bold text-white mb-2">₹25,000</div>
-          <p class="text-xs text-slate-500 mb-6 md:mb-8 px-2">TW-RS 2.0 is an educational program and does not provide trading signals or investment advice.</p>
-          <ul class="text-slate-300 text-sm md:text-base space-y-3 md:space-y-4 mb-8 md:mb-10 text-left w-full">
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Advanced Chart Reading</li>
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Institutional Liquidity Concepts</li>
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Structure Shift Identification</li>
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Reversal Zone Detection</li>
-          </ul>
-          <a href="https://forms.gle/Q4KFp8N482mS3R6W8" target="_blank" rel="noopener noreferrer" class="w-full py-3 md:py-4 rounded-xl font-bold text-brand-darker bg-brand-gold hover:bg-brand-goldHover transition-colors mt-auto shadow-[0_0_15px_rgba(212,175,55,0.4)] block text-center">Apply Now</a>
+            <!-- Sticky Property Navigation -->
+            <div class="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 mb-8 py-4 -mx-6 px-6 shadow-sm hidden md:block">
+                <div class="flex space-x-6 overflow-x-auto hide-scrollbar">
+                    <button onclick="scrollToSection('sec-rera')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">RERA Details</button>
+                    <button onclick="scrollToSection('sec-project-info')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Project Info</button>
+                    <button onclick="scrollToSection('sec-overview')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Overview</button>
+                    <button onclick="scrollToSection('sec-amenities')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Amenities</button>
+                    <button onclick="scrollToSection('sec-floor-plans')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Floor Plans</button>
+                    <button onclick="scrollToSection('sec-map')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Location Map</button>
+                    <button onclick="scrollToSection('sec-developer')" class="text-sm font-medium text-gray-600 hover:text-gold-500 whitespace-nowrap">Developer</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <img id="pp-img" src="" alt="Property" class="w-full h-[400px] lg:h-[500px] object-cover rounded-lg shadow-lg mb-4" referrerPolicy="no-referrer">
+                    <div id="pp-gallery" class="grid grid-cols-5 gap-2">
+                        <!-- Thumbnails will be injected here -->
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <div class="uppercase tracking-wider text-xs font-bold text-gold-500 mb-2">For Sale</div>
+                    <h2 id="pp-title" class="text-4xl font-serif text-dark mb-4"></h2>
+                    <div id="pp-price" class="text-3xl text-gold-500 font-medium mb-6"></div>
+                    <p class="text-gray-500 mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <span id="pp-location"></span>
+                    </p>
+                    <p class="text-sm text-gray-400 font-mono mb-8" id="pp-rera"></p>
+                    
+                    <div class="grid grid-cols-2 gap-4 border-y border-gray-100 py-6 mb-8">
+                        <div class="text-center border-r border-gray-100">
+                            <div class="text-gray-400 text-sm mb-1">Bedrooms</div>
+                            <div id="pp-beds" class="font-medium text-dark text-lg"></div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-gray-400 text-sm mb-1">Bathrooms</div>
+                            <div id="pp-baths" class="font-medium text-dark text-lg"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button onclick="openModal()" class="flex-1 bg-dark text-white hover:bg-gold-500 py-4 uppercase tracking-wider text-sm font-medium transition-colors duration-300 text-center rounded-lg">Enquire Now</button>
+                        <a href="https://wa.me/919619135506" target="_blank" rel="noopener noreferrer" class="flex-1 border border-dark text-dark hover:bg-dark hover:text-white py-4 uppercase tracking-wider text-sm font-medium transition-colors duration-300 text-center flex items-center justify-center rounded-lg">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comprehensive Details Section (Single Column) -->
+            <div class="mt-20 border-t border-gray-100 pt-16 max-w-4xl mx-auto space-y-16">
+                
+                <!-- 1. RERA Details -->
+                <section id="sec-rera">
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-100">
+                        <h3 class="text-2xl font-serif text-dark mb-4">RERA Details</h3>
+                        <p class="text-gray-600 mb-4">The project has been registered via MahaRERA registration number:</p>
+                        <p id="pp-rera-full" class="font-mono font-semibold text-dark text-xl mb-4"></p>
+                        <p class="text-sm text-gray-400">Available on the website <a href="https://maharera.mahaonline.gov.in" target="_blank" rel="noopener noreferrer" class="text-gold-500 hover:underline">https://maharera.mahaonline.gov.in</a> under registered projects.</p>
+                    </div>
+                </section>
+
+                <!-- 2. Project Information -->
+                <section id="sec-project-info">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Project Information</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Status</p>
+                            <p class="font-medium text-dark text-lg" id="pp-status"></p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Possession</p>
+                            <p class="font-medium text-dark text-lg" id="pp-possession"></p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Towers</p>
+                            <p class="font-medium text-dark text-lg" id="pp-towers"></p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-100 text-center">
+                            <p class="text-sm text-gray-400 uppercase tracking-wider mb-2">Total Units</p>
+                            <p class="font-medium text-dark text-lg" id="pp-units"></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. Overview -->
+                <section id="sec-overview">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Overview</h3>
+                    <p id="pp-desc" class="text-gray-800 text-xl leading-relaxed mb-8 font-light"></p>
+                    
+                    <div id="pp-gif-container" class="rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                        <img id="pp-gif" src="" alt="Property Highlight" class="w-full h-[400px] object-cover" referrerPolicy="no-referrer">
+                    </div>
+                </section>
+
+                <!-- 4. Amenities -->
+                <section id="sec-amenities">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Amenities</h3>
+                    <div id="pp-features" class="flex flex-wrap gap-4">
+                        <!-- Features injected here -->
+                    </div>
+                </section>
+
+                <!-- 5. Unit Floor Plan Pricing -->
+                <section id="sec-floor-plans">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Unit Floor Plan & Pricing</h3>
+                    <div class="overflow-x-auto border border-gray-100 rounded-xl shadow-sm">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 text-gray-500 text-sm uppercase tracking-wider">
+                                    <th class="p-6 font-medium border-b border-gray-100">Configuration</th>
+                                    <th class="p-6 font-medium border-b border-gray-100">Carpet Area</th>
+                                    <th class="p-6 font-medium border-b border-gray-100">Price</th>
+                                    <th class="p-6 font-medium border-b border-gray-100 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pp-floor-plans-body" class="divide-y divide-gray-100 bg-white">
+                                <!-- Injected -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Location Map -->
+                <section id="sec-map">
+                    <h3 class="text-2xl font-serif text-dark mb-6">Location Map</h3>
+                    <div class="w-full h-[450px] bg-gray-200 rounded-xl overflow-hidden relative border border-gray-100 shadow-sm">
+                        <iframe id="pp-map-iframe" src="" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </section>
+
+                <!-- 6. Developer Details -->
+                <section id="sec-developer">
+                    <div class="bg-white p-8 rounded-xl border border-gray-100 shadow-sm">
+                        <h3 class="text-2xl font-serif text-dark mb-6">Developer Details</h3>
+                        <div class="flex items-center space-x-6 mb-6">
+                            <div class="w-16 h-16 bg-dark rounded-full flex items-center justify-center flex-shrink-0 text-2xl font-serif text-gold-400">
+                                <span id="pp-dev-initial">D</span>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-medium text-dark mb-1" id="pp-dev-name">Developer Name</h4>
+                                <p class="text-sm text-gray-500 uppercase tracking-wider">Premium Real Estate Builder</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-8 leading-relaxed">Committed to delivering high-quality residential projects with world-class amenities, innovative designs, and timely possession. Building trust through transparency and excellence.</p>
+                    </div>
+                </section>
+
+                <!-- 7. Contact Enquiry -->
+                <section id="sec-contact">
+                    <div class="bg-dark text-white p-10 rounded-xl shadow-xl relative overflow-hidden">
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between">
+                            <div class="mb-8 md:mb-0 md:mr-8">
+                                <h3 class="text-3xl font-serif mb-3">Interested in this property?</h3>
+                                <p class="text-gray-400 text-lg max-w-lg">Get in touch with our real estate experts for more details, site visits, and exclusive offers.</p>
+                            </div>
+                            <button onclick="openModal()" class="w-full md:w-auto whitespace-nowrap bg-gold-500 hover:bg-gold-400 text-white px-10 py-5 rounded-lg text-sm font-bold transition-colors flex items-center justify-center uppercase tracking-wider shadow-lg">
+                                <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                Contact Enquiry
+                            </button>
+                        </div>
+                        <svg class="absolute -bottom-16 -right-16 w-80 h-80 text-white opacity-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                    </div>
+                </section>
+
+            </div>
         </div>
-
-        <!-- Mentorship Card -->
-        <div class="glass-card rounded-3xl p-6 md:p-10 flex flex-col items-center text-center border-2 border-brand-gold relative transform md:-translate-y-4 shadow-[0_10px_30px_-10px_rgba(212,175,55,0.25)] md:shadow-[0_20px_50px_-12px_rgba(212,175,55,0.25)] mt-4 md:mt-0">
-          <div class="absolute top-0 transform -translate-y-1/2 bg-brand-gold text-brand-darker px-3 py-1 md:px-4 md:py-1 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider">
-            Most Popular
-          </div>
-          <h3 class="font-heading text-xl md:text-2xl font-bold mb-2">Personal Mentorship</h3>
-          <p class="text-slate-400 text-sm md:text-base mb-6 md:mb-8 md:h-12">Advanced mentorship with direct guidance and chart discussions.</p>
-          <div class="text-4xl md:text-5xl font-bold text-brand-gold mb-2">₹35,000</div>
-          <p class="text-xs text-slate-500 mb-6 md:mb-8 px-2">TW-RS 2.0 is an educational program and does not provide trading signals or investment advice.</p>
-          <ul class="text-slate-300 text-sm md:text-base space-y-3 md:space-y-4 mb-8 md:mb-10 text-left w-full">
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Everything in Course</li>
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Direct 1-on-1 Guidance</li>
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Live Chart Discussions</li>
-            <li class="flex items-center"><svg class="w-4 h-4 md:w-5 md:h-5 text-brand-gold mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Professional Trade Planning</li>
-          </ul>
-          <a href="https://forms.gle/Q4KFp8N482mS3R6W8" target="_blank" rel="noopener noreferrer" class="w-full py-3 md:py-4 rounded-xl font-bold text-brand-darker bg-brand-gold hover:bg-brand-goldHover transition-colors mt-auto shadow-[0_0_15px_rgba(212,175,55,0.4)] block text-center">Apply Now</a>
-        </div>
-      </div>
-      
-      <div class="mt-10 md:mt-12 text-center px-4">
-        <p class="text-slate-400 text-sm md:text-base">Seats are limited to maintain learning quality. Only serious traders should apply.</p>
-      </div>
     </div>
-  </section>
 
-  <!-- Contact Us Section -->
-  <section id="contact" class="py-16 md:py-24 bg-brand-darker border-t border-slate-800 px-5 md:px-6 text-center">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-white">Contact Us</h2>
-      <p class="text-slate-400 text-lg mb-8">Have questions about the mentorship or course? Reach out to us directly.</p>
-      <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-        <a href="mailto:trendingwick@gmail.com" class="inline-flex items-center justify-center px-8 py-4 rounded-xl border border-brand-gold/30 text-brand-gold hover:bg-brand-gold/10 transition-colors text-lg font-medium w-full md:w-auto">
-          <svg class="w-5 h-5 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-          trendingwick@gmail.com
+    <!-- Footer -->
+    <footer id="contact" class="bg-dark text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-1">
+                    <a href="#" class="text-2xl font-serif tracking-wider mb-4 inline-block">THANE HOME<span class="text-gold-400">.</span></a>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-xs">Your trusted partner for premium homes and smart property investments in Thane, Mumbai & Navi Mumbai.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-serif mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#home" class="hover:text-gold-400 transition-colors">Home</a></li>
+                        <li><a href="#properties" class="hover:text-gold-400 transition-colors">Properties</a></li>
+                        <li><a href="#about" class="hover:text-gold-400 transition-colors">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-serif mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li>
+                            <a href="tel:+919619135506" class="hover:text-gold-400 transition-colors flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                +91 96191 35506
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/919619135506" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                                WhatsApp
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:hello@thanehome.com" class="hover:text-gold-400 transition-colors flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                hello@thanehome.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-serif mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" onclick="openTerms(); return false;" class="hover:text-gold-400 transition-colors">Terms & Conditions</a></li>
+                        <li><a href="#privacy" class="hover:text-gold-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#disclaimer" class="hover:text-gold-400 transition-colors">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <div class="mb-4 md:mb-0">
+                    &copy; 2026 Thane Home. All rights reserved.
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/prop_advesers_realtors?igsh=Z2NmcHJlNXQzZjN6" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors" aria-label="Instagram">Instagram</a>
+                    <a href="https://www.facebook.com/share/1BH6URH3tT/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors" aria-label="Facebook">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Terms and Conditions View -->
+    <div id="terms-view" class="hidden pt-28 pb-24 bg-white min-h-screen">
+        <div class="max-w-4xl mx-auto px-6">
+            <button onclick="closeTerms()" class="flex items-center text-gray-500 hover:text-gold-500 transition-colors mb-8">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Home
+            </button>
+            <h2 class="text-4xl font-serif text-dark mb-8">Terms & Conditions</h2>
+            <div class="prose text-gray-600 space-y-6">
+                <p>Welcome to Thane Home. By accessing our website, you agree to these terms and conditions. Please read them carefully.</p>
+                
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">1. Acceptance of Terms</h3>
+                <p>By accessing and using the Thane Home website, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using this website's particular services, you shall be subject to any posted guidelines or rules applicable to such services.</p>
+                
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">2. Property Information and Disclaimer</h3>
+                <p>All property details, including prices, dimensions, floor plans, amenities, and availability, are subject to change without notice. We strive for accuracy but cannot guarantee that all information is completely up-to-date or error-free. The images, renders, and videos are for representational purposes only.</p>
+                
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">3. User Obligations</h3>
+                <p>Users agree to use this website for lawful purposes only and not to engage in any conduct that restricts or inhibits anyone else's use or enjoyment of the site. You agree not to use the site to send unsolicited commercial emails or "spam".</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">4. Intellectual Property</h3>
+                <p>The site and its original content, features, and functionality are owned by Thane Home and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">5. Limitation of Liability</h3>
+                <p>In no event shall Thane Home, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the website.</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">6. Changes to Terms</h3>
+                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. What constitutes a material change will be determined at our sole discretion.</p>
+
+                <h3 class="text-2xl font-serif text-dark mt-8 mb-4">7. Contact Us</h3>
+                <p>If you have any questions about these Terms, please contact us at hello@thanehome.com or call us at +91 96191 35506.</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="privacy" class="hidden py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-serif text-dark mb-6">Privacy Policy</h2>
+            <div class="prose text-gray-600">
+                <p class="mb-4">Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.</p>
+                <h3 class="text-xl font-medium text-dark mt-6 mb-3">1. Information Collection</h3>
+                <p class="mb-4">We collect information you provide directly to us, such as when you fill out a contact form or subscribe to our newsletter.</p>
+                <h3 class="text-xl font-medium text-dark mt-6 mb-3">2. Use of Information</h3>
+                <p class="mb-4">We use the information we collect to provide, maintain, and improve our services, and to communicate with you about properties that may interest you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-container">
+        <!-- Enquiry Button -->
+        <button onclick="openModal()" class="float-btn enquiry-btn" aria-label="Contact Enquiry">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+            </svg>
+            <span>Enquiry</span>
+        </button>
+        <!-- Call Button -->
+        <a href="tel:+919619135506" class="float-btn call-btn" aria-label="Call Us">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+            </svg>
+            <span>Call</span>
         </a>
-        <a href="https://wa.me/919220507553" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-4 rounded-xl border border-brand-gold/30 text-brand-gold hover:bg-brand-gold/10 transition-colors text-lg font-medium w-full md:w-auto">
-          <svg class="w-5 h-5 mr-3 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          +91 9220507553
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/919619135506" target="_blank" rel="noopener noreferrer" class="float-btn whatsapp-btn" aria-label="Chat on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+            </svg>
+            <span>WhatsApp</span>
         </a>
-      </div>
     </div>
-  </section>
 
-  <!-- Footer Section -->
-  <footer class="bg-brand-darker pb-8 px-5 md:px-6">
-    <div class="max-w-6xl mx-auto">
-      <!-- Legal / Terms -->
-      <div class="flex flex-wrap justify-center gap-6 mb-8 pt-8">
-        <a href="#" class="text-sm text-slate-400 hover:text-brand-gold transition-colors">Privacy Policy</a>
-        <a href="#" class="text-sm text-slate-400 hover:text-brand-gold transition-colors">Refund Policy</a>
-      </div>
-      
-      <!-- Disclaimer & Copyright -->
-      <div class="border-t border-slate-800 pt-8">
-        <h4 class="text-white font-heading font-bold text-md mb-4">Educational & Regulatory Disclaimer</h4>
-        <div class="text-slate-500 text-xs md:text-sm space-y-3 mb-8">
-          <p>The TW-RS 2.0 program is an educational training program designed to teach market analysis and trading concepts.</p>
-          <p>We do not provide investment advice, portfolio management services, or trading signals.</p>
-          <p>The content provided through this website, mentorship sessions, and learning materials is intended solely for educational and informational purposes.</p>
-          <p>Participants should understand that:</p>
-          <ul class="list-disc list-inside pl-2 space-y-1">
-            <li>We are not SEBI-registered investment advisors</li>
-            <li>No buy or sell recommendations are provided</li>
-            <li>No financial advice is given</li>
-            <li>No guaranteed profits are promised</li>
-          </ul>
-          <p>All trading decisions made by participants are their own responsibility.</p>
-          <p>Trading in financial markets such as Forex, stocks, indices, cryptocurrencies, and commodities involves substantial risk and may result in financial losses.</p>
-          <p>By enrolling in this program, participants acknowledge that they are solely responsible for their trading decisions and financial outcomes.</p>
+    <!-- Enquiry Modal -->
+    <div id="enquiryModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+        <div class="bg-white w-full max-w-md mx-4 rounded-xl shadow-2xl overflow-hidden relative transform transition-transform duration-300 scale-95" id="modalContent">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-dark transition-colors" aria-label="Close Modal">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <div class="p-8">
+                <h3 class="text-2xl font-serif text-dark mb-2">Request Information</h3>
+                <p class="text-gray-500 text-sm mb-6">Fill out the form below and our real estate experts will get in touch with you shortly.</p>
+                
+                <form id="enquiryForm" action="https://script.google.com/macros/s/AKfycbxXYZiMdI1yfer_qgOKN49wqidg1Gy7lRqRkGN0oA770MIJ2npb0XPrAsDY7Bl9Ceni/exec" method="POST" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="name" name="fullName" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <div class="flex">
+                            <span class="inline-flex items-center px-4 py-2 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 rounded-l-lg text-sm font-medium">+91</span>
+                            <input type="tel" id="phone" name="phoneNumber" required pattern="[0-9]{10}" minlength="10" maxlength="10" title="Please enter a valid 10-digit Indian phone number" placeholder="10-digit mobile number" class="w-full px-4 py-2 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all" oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" name="emailAddress" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-400 focus:border-transparent outline-none transition-all resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-dark text-white hover:bg-gold-500 py-3 rounded-lg uppercase tracking-wider text-sm font-medium transition-colors duration-300 mt-2">Submit Enquiry</button>
+                </form>
+            </div>
         </div>
-        <div class="border-t border-slate-800 pt-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4">
-          <p class="text-slate-500 text-xs md:text-sm whitespace-nowrap">
-            &copy; 2026 TrendingWick. All rights reserved.
-          </p>
-        </div>
-      </div>
     </div>
-  </footer>
 
+    <script>
+        const modal = document.getElementById('enquiryModal');
+        const modalContent = document.getElementById('modalContent');
+        const form = document.getElementById('enquiryForm');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // Small delay to allow display:flex to apply before animating opacity/transform
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            // Wait for animation to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // Close modal when clicking outside the content box
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Handle form submission
+        // REPLACE THIS URL with your actual Google Apps Script Web App URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwqwGpenIhSiV8W8ftsSDdIF_Zh0UAgatUo34tdNzAMuM4oJpR0R82lGPpRYpXnqKaNCQ/exec';
+
+        function submitForm(e) {
+            e.preventDefault();
+            
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(e.target);
+            const data = new URLSearchParams();
+            for (const pair of formData) {
+                data.append(pair[0], pair[1]);
+            }
+
+            // If the URL hasn't been replaced yet, just show a success message
+            if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
+                alert('Form submission is ready! Please replace the GOOGLE_SCRIPT_URL in the code with your actual Google Apps Script URL to start receiving data.');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                e.target.reset();
+                closeModal();
+                return;
+            }
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: data,
+                mode: 'no-cors'
+            })
+            .then(res => {
+                alert('Thank you for your enquiry! Our team will contact you shortly.');
+                e.target.reset();
+                closeModal();
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('There was an error submitting your form. Please try again later.');
+            })
+            .finally(() => {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        }
+
+        // Handle Property Page Navigation
+        function openProperty(el) {
+            const imagesAttr = el.getAttribute('data-images');
+            let images = [];
+            if(imagesAttr) {
+                images = imagesAttr.split(',');
+            } else {
+                images = [el.querySelector('img').src];
+            }
+            
+            const title = el.querySelector('h3').textContent.trim();
+            const price = el.querySelector('.text-gold-500').textContent.trim();
+            const location = el.querySelectorAll('p')[0].textContent.trim();
+            const rera = el.getAttribute('data-rera');
+            const desc = el.querySelectorAll('p')[2].textContent.trim();
+            const gif = el.getAttribute('data-gif');
+            const spans = el.querySelectorAll('.flex.space-x-6 span');
+            
+            const beds = spans[0].textContent.trim();
+            const baths = spans[1].textContent.trim();
+            
+            document.getElementById('pp-img').src = images[0];
+            
+            // Build gallery
+            const galleryContainer = document.getElementById('pp-gallery');
+            galleryContainer.innerHTML = '';
+            images.forEach((imgSrc, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = imgSrc;
+                thumb.className = `w-full h-16 md:h-20 object-cover rounded cursor-pointer border-2 transition-all ${index === 0 ? 'border-gold-500 opacity-100' : 'border-transparent opacity-60 hover:opacity-100'}`;
+                thumb.onclick = function() {
+                    document.getElementById('pp-img').src = imgSrc;
+                    Array.from(galleryContainer.children).forEach(child => {
+                        child.classList.remove('border-gold-500', 'opacity-100');
+                        child.classList.add('border-transparent', 'opacity-60');
+                    });
+                    this.classList.remove('border-transparent', 'opacity-60');
+                    this.classList.add('border-gold-500', 'opacity-100');
+                };
+                galleryContainer.appendChild(thumb);
+            });
+            document.getElementById('pp-title').textContent = title;
+            document.getElementById('pp-price').textContent = price;
+            
+            // Build features
+            const featuresAttr = el.getAttribute('data-features');
+            const featuresList = document.getElementById('pp-features');
+            featuresList.innerHTML = '';
+            if (featuresAttr) {
+                const features = featuresAttr.split(',');
+                features.forEach(f => {
+                    const span = document.createElement('span');
+                    span.className = 'inline-flex items-center px-4 py-2 rounded-full bg-gold-50 text-gold-600 font-semibold text-sm border border-gold-200 shadow-sm';
+                    span.innerHTML = `<svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>${f.trim()}`;
+                    featuresList.appendChild(span);
+                });
+            }
+            document.getElementById('pp-location').textContent = location;
+            if (rera) {
+                document.getElementById('pp-rera').textContent = `RERA Registration No: ${rera}`;
+                document.getElementById('pp-rera-full').textContent = rera;
+            } else {
+                document.getElementById('pp-rera').textContent = '';
+                document.getElementById('pp-rera-full').textContent = 'Not Available';
+            }
+            document.getElementById('pp-desc').textContent = desc;
+            
+            // Populate Project Info
+            document.getElementById('pp-status').textContent = el.getAttribute('data-status') || 'N/A';
+            document.getElementById('pp-possession').textContent = el.getAttribute('data-possession') || 'N/A';
+            document.getElementById('pp-towers').textContent = el.getAttribute('data-towers') || 'N/A';
+            document.getElementById('pp-units').textContent = el.getAttribute('data-units') || 'N/A';
+            
+            // Populate Developer
+            const devName = el.getAttribute('data-developer') || 'Premium Builder';
+            document.getElementById('pp-dev-name').textContent = devName;
+            document.getElementById('pp-dev-initial').textContent = devName.charAt(0);
+            
+            // Populate Map
+            const mapIframe = document.getElementById('pp-map-iframe');
+            mapIframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(location)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+            
+            // Populate Floor Plans
+            const floorplansAttr = el.getAttribute('data-floorplans');
+            const fpBody = document.getElementById('pp-floor-plans-body');
+            fpBody.innerHTML = '';
+            if (floorplansAttr) {
+                const plans = floorplansAttr.split(',');
+                plans.forEach(plan => {
+                    const [config, area, price] = plan.split('|');
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-gray-50 transition-colors";
+                    tr.innerHTML = `
+                        <td class="p-4 font-medium text-dark">${config ? config.trim() : ''}</td>
+                        <td class="p-4 text-gray-600">${area ? area.trim() : ''}</td>
+                        <td class="p-4 text-gold-500 font-medium">${price ? price.trim() : ''}</td>
+                        <td class="p-4 text-right">
+                            <button onclick="openModal()" class="text-sm text-dark hover:text-gold-500 font-medium underline">Enquire</button>
+                        </td>
+                    `;
+                    fpBody.appendChild(tr);
+                });
+            }
+            
+            const gifContainer = document.getElementById('pp-gif-container');
+            if (gif) {
+                document.getElementById('pp-gif').src = gif;
+                gifContainer.classList.remove('hidden');
+            } else {
+                gifContainer.classList.add('hidden');
+            }
+            
+            document.getElementById('pp-beds').textContent = beds;
+            document.getElementById('pp-baths').textContent = baths;
+            
+            document.getElementById('main-view').classList.add('hidden');
+            document.getElementById('property-view').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function closeProperty(scrollToProperties = false) {
+            document.getElementById('property-view').classList.add('hidden');
+            document.getElementById('main-view').classList.remove('hidden');
+            if (scrollToProperties) {
+                window.scrollTo(0, document.getElementById('properties').offsetTop - 80);
+            }
+        }
+
+        function openTerms() {
+            document.getElementById('main-view').classList.add('hidden');
+            document.getElementById('property-view').classList.add('hidden');
+            document.getElementById('terms-view').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function closeTerms() {
+            document.getElementById('terms-view').classList.add('hidden');
+            document.getElementById('main-view').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                // Offset for the sticky header + main navbar
+                const y = section.getBoundingClientRect().top + window.scrollY - 140;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
